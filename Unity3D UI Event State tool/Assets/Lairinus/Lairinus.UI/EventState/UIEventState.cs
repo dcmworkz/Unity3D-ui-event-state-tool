@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -24,16 +25,22 @@ namespace Lairinus.UI
 
         #endregion Remarks
 
+        #region Private Fields
+
         [SerializeField] private bool _enableDebugging = false;
+        [SerializeField] private EventState _onBeginDrag = new EventState();
+        [SerializeField] private EventState _onDrag = new EventState();
+        [SerializeField] private EventState _onEndDrag = new EventState();
+        [SerializeField] private EventState _onIntiializePotentialDrag = new EventState();
         [SerializeField] private EventState _onPointerClick = new EventState();
         [SerializeField] private EventState _onPointerDown = new EventState();
-        [SerializeField] private EventState _onPointerUp = new EventState();
         [SerializeField] private EventState _onPointerEnter = new EventState();
         [SerializeField] private EventState _onPointerExit = new EventState();
-        [SerializeField] private EventState _onBeginDrag = new EventState();
-        [SerializeField] private EventState _onEndDrag = new EventState();
-        [SerializeField] private EventState _onDrag = new EventState();
-        [SerializeField] private EventState _onIntiializePotentialDrag = new EventState();
+        [SerializeField] private EventState _onPointerUp = new EventState();
+
+        #endregion Private Fields
+
+        #region Public Methods
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -45,6 +52,7 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
+            _onBeginDrag.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnBeginDrag.Replace("%%custom%%", name));
         }
@@ -59,6 +67,7 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
+            _onDrag.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnDrag.Replace("%%custom%%", name));
         }
@@ -73,6 +82,7 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
+            _onEndDrag.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnEndDrag.Replace("%%custom%%", name));
         }
@@ -87,6 +97,7 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
+            _onIntiializePotentialDrag.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPotentialDragInitialized.Replace("%%custom%%", name));
         }
@@ -101,41 +112,93 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
+            _onPointerClick.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerClick.Replace("%%custom%%", name));
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            #region Remarks
+
+            /*
+             *   Called when the user presses the left or right mouse button down
+             */
+
+            #endregion Remarks
+
+            _onPointerDown.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerDown.Replace("%%custom%%", name));
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            #region Remarks
+
+            /*
+             *   Called when the user's pointer enters this element's region
+             */
+
+            #endregion Remarks
+
+            _onPointerEnter.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerDown.Replace("%%custom%%", name));
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            #region Remarks
+
+            /*
+             *   Called when the user's pointer exits this element's region
+             */
+
+            #endregion Remarks
+
+            _onPointerExit.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerExit.Replace("%%custom%%", name));
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            #region Remarks
+
+            /*
+             *   Called when the user releases the left or right mouse button up
+             */
+
+            #endregion Remarks
+
+            _onPointerUp.InvokeCallbacks();
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerUp.Replace("%%custom%%", name));
         }
 
+        #endregion Public Methods
+
+        #region Public Classes
+
         [System.Serializable]
         public class EventState
         {
-            [SerializeField] private bool _stateEnabled = true;
-            [SerializeField] private Sprite _sprite = null;
-            [SerializeField] private Color _color = new Color();
+            [SerializeField] private UnityEvent _callback = new UnityEvent();
+            [SerializeField] private bool _stateEnabled = false;
+            public bool stateEnabled { get { return _stateEnabled; } set { _stateEnabled = value; } }
+            public UnityEvent callback { get { return _callback; } }
+
+            public void InvokeCallbacks()
+            {
+                if (_stateEnabled)
+                    _callback.Invoke();
+            }
         }
+
+        #endregion Public Classes
+
+        #region Private Classes
 
         private class Debugger
         {
@@ -147,15 +210,27 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-            public static readonly string Debug_OnPointerDown = "UIEventState on GameObject %%custom%% => Registered POINTER DOWN";
-            public static readonly string Debug_OnPointerUp = "UIEventState on GameObject %%custom%% => Registered POINTER UP";
+            #region Public Fields
+
+            public static readonly string Debug_OnBeginDrag = "UIEventState on GameObject %%custom%% => Registered BEGIN DRAG";
+            public static readonly string Debug_OnDrag = "UIEventState on GameObject %%custom%% => Registered DRAG";
+            public static readonly string Debug_OnEndDrag = "UIEventState on GameObject %%custom%% => Registered END DRAG";
             public static readonly string Debug_OnPointerClick = "UIEventState on GameObject %%custom%% => Registered POINTER CLICK";
+            public static readonly string Debug_OnPointerDown = "UIEventState on GameObject %%custom%% => Registered POINTER DOWN";
             public static readonly string Debug_OnPointerEnter = "UIEventState on GameObject %%custom%% => Registered POINTER ENTER";
             public static readonly string Debug_OnPointerExit = "UIEventState on GameObject %%custom%% => Registered POINTER EXIT";
-            public static readonly string Debug_OnBeginDrag = "UIEventState on GameObject %%custom%% => Registered BEGIN DRAG";
-            public static readonly string Debug_OnEndDrag = "UIEventState on GameObject %%custom%% => Registered END DRAG";
-            public static readonly string Debug_OnDrag = "UIEventState on GameObject %%custom%% => Registered DRAG";
+            public static readonly string Debug_OnPointerUp = "UIEventState on GameObject %%custom%% => Registered POINTER UP";
             public static readonly string Debug_OnPotentialDragInitialized = "UIEventState on GameObject %%custom%% => Registered POTENTIAL DRAG INITIALIZED";
+
+            #endregion Public Fields
+        }
+
+        #endregion Private Classes
+
+        Graphic graphic = null;
+        private void Awake()
+        {
+            graphic = GetComponent<Graphic>();        
         }
     }
 }
