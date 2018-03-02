@@ -95,6 +95,8 @@ namespace Lairinus.UI
             HandleEventState(onEndDragState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnEndDrag.Replace("%%custom%%", name));
+
+            Toggle t = null;
         }
 
         public void OnInitializePotentialDrag(PointerEventData eventData)
@@ -213,11 +215,16 @@ namespace Lairinus.UI
         private void RunEventStateTransitions(EventState eventState, float currentTransitionTime, float totalTransitionTime)
         {
             eventState.scaleTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            eventState.rotationTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
             if (eventState is ImageEventState)
             {
                 ImageEventState ies = (ImageEventState)eventState;
                 ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-                ies.rotationTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            }
+            else if (eventState is TextEventState)
+            {
+                TextEventState tes = (TextEventState)eventState;
+                tes.colorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
             }
         }
 
@@ -282,52 +289,6 @@ namespace Lairinus.UI
         protected Graphic graphicElement { get; set; }
 
         #endregion Public Methods
-
-        #region Public Classes
-
-        [System.Serializable]
-        public class EventState
-        {
-            #region Remarks
-
-            /*   External and internal use
-             *   -------------------------
-             *
-             */
-
-            #endregion Remarks
-
-            #region Public Properties
-
-            public ScaleTransition scaleTransition { get { return _scaleTransition; } }
-            public RotationTransition rotationTransition { get { return _rotationTransition; } }
-
-            // Flow Control - prevents an event handler being called multiple times (useful for persistent events such as OnDrag)
-            public bool stateCalculationStarted { get; set; }
-
-            public bool stateEnabled { get { return _stateEnabled; } set { _stateEnabled = value; } }
-            public float transitionTime { get { return _transitionTime; } set { _transitionTime = value; } }
-
-            #endregion Public Properties
-
-            #region Private Fields
-
-            [SerializeField] protected bool _stateEnabled = true;
-            [SerializeField] protected float _transitionTime = 0.25F;
-            [SerializeField] protected ScaleTransition _scaleTransition = new ScaleTransition();
-            [SerializeField] protected RotationTransition _rotationTransition = new RotationTransition();
-
-            #endregion Private Fields
-        }
-
-        [System.Serializable]
-        public class ImageEventState : EventState
-        {
-            [SerializeField] private ImageColorTransition _imageColorTransition = new ImageColorTransition();
-            public ImageColorTransition imageColorTransition { get { return _imageColorTransition; } }
-        }
-
-        #endregion Public Classes
 
         #region Private Classes
 

@@ -68,6 +68,41 @@ namespace Lairinus.UI
         }
 
         [System.Serializable]
+        public class EventState
+        {
+            #region Remarks
+
+            /*   External and internal use
+             *   -------------------------
+             *
+             */
+
+            #endregion Remarks
+
+            #region Public Properties
+
+            public RotationTransition rotationTransition { get { return _rotationTransition; } }
+            public ScaleTransition scaleTransition { get { return _scaleTransition; } }
+
+            // Flow Control - prevents an event handler being called multiple times (useful for persistent events such as OnDrag)
+            public bool stateCalculationStarted { get; set; }
+
+            public bool stateEnabled { get { return _stateEnabled; } set { _stateEnabled = value; } }
+            public float transitionTime { get { return _transitionTime; } set { _transitionTime = value; } }
+
+            #endregion Public Properties
+
+            #region Private Fields
+
+            [SerializeField] protected RotationTransition _rotationTransition = new RotationTransition();
+            [SerializeField] protected ScaleTransition _scaleTransition = new ScaleTransition();
+            [SerializeField] protected bool _stateEnabled = true;
+            [SerializeField] protected float _transitionTime = 0.25F;
+
+            #endregion Private Fields
+        }
+
+        [System.Serializable]
         public class ImageColorTransition : BaseTransition
         {
             #region Public Properties
@@ -116,6 +151,75 @@ namespace Lairinus.UI
             #region Private Fields
 
             [SerializeField] private Color _finalColor = Color.white;
+
+            #endregion Private Fields
+        }
+
+        [System.Serializable]
+        public class TextColorTransition : BaseTransition
+        {
+            #region Public Properties
+
+            public Color finalColor { get { return _finalColor; } set { _finalColor = value; } }
+
+            #endregion Public Properties
+
+            #region Public Methods
+
+            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            {
+                #region Remarks
+
+                /*
+                 *    For internal use only
+                 *    ---------------------
+                 *    Lerps the color of the Text object
+                 */
+
+                #endregion Remarks
+
+                if (_ignoreTransition)
+                    return;
+
+                Text text = null;
+                if (eventStateElement is UITextEventState)
+                {
+                    UITextEventState textEventState = (UITextEventState)eventStateElement;
+                    text = (Text)textEventState.graphicElement;
+                }
+
+                if (eventStateElement != null)
+                    base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
+
+                Color elementColor = text.color;
+                elementColor = Color.Lerp(elementColor, _finalColor, currentTransitionTime / totalTransitionTime);
+                if (currentTransitionTime >= totalTransitionTime)
+                    elementColor = _finalColor;
+
+                text.color = elementColor;
+            }
+
+            #endregion Public Methods
+
+            #region Private Fields
+
+            [SerializeField] private Color _finalColor = Color.white;
+
+            #endregion Private Fields
+        }
+
+        [System.Serializable]
+        public class ImageEventState : EventState
+        {
+            #region Public Properties
+
+            public ImageColorTransition imageColorTransition { get { return _imageColorTransition; } }
+
+            #endregion Public Properties
+
+            #region Private Fields
+
+            [SerializeField] private ImageColorTransition _imageColorTransition = new ImageColorTransition();
 
             #endregion Private Fields
         }
@@ -204,6 +308,13 @@ namespace Lairinus.UI
             [SerializeField] private Vector2 _finalScale = new Vector3(1, 1, 1);
 
             #endregion Private Fields
+        }
+
+        [System.Serializable]
+        public class TextEventState : EventState
+        {
+            [SerializeField] private TextColorTransition _colorTransition = new TextColorTransition();
+            public TextColorTransition colorTransition { get { return _colorTransition; } }
         }
 
         #endregion Public Classes
