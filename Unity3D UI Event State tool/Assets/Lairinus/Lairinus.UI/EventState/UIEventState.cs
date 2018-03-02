@@ -28,36 +28,27 @@ namespace Lairinus.UI
 
         #region Private Fields
 
-        [SerializeField] private bool _enableDebugging = false;
-<<<<<<< HEAD
-        [SerializeField] private EventState _normalState = new EventState();
-        [SerializeField] private EventState _onHoverState = new EventState();
-        [SerializeField] private EventState _onPointerClickState = new EventState();
-        [SerializeField] private EventState _onPointerDownState = new EventState();
-        [SerializeField] private EventState _onPointerUpState = new EventState();
-        [SerializeField] private EventState _onPointerEnterState = new EventState();
-        [SerializeField] private EventState _onBeginDragState = new EventState();
-        [SerializeField] private EventState _onEndDragState = new EventState();
-        [SerializeField] private EventState _onDragState = new EventState();
-        [SerializeField] private EventState _onInitializePotentialDragState = new EventState();
-        private EventState _lastTriggeredState = null;
-
         public RectTransform cachedRectTransform { get; private set; }
-=======
-        [SerializeField] private EventState _onBeginDrag = new EventState();
-        [SerializeField] private EventState _onDrag = new EventState();
-        [SerializeField] private EventState _onEndDrag = new EventState();
-        [SerializeField] private EventState _onIntiializePotentialDrag = new EventState();
-        [SerializeField] private EventState _onPointerClick = new EventState();
-        [SerializeField] private EventState _onPointerDown = new EventState();
-        [SerializeField] private EventState _onPointerEnter = new EventState();
-        [SerializeField] private EventState _onPointerExit = new EventState();
-        [SerializeField] private EventState _onPointerUp = new EventState();
+        [SerializeField] private bool _enableDebugging = false;
+        private EventState lastTriggeredState = null;
+        protected EventState onBeginDragState { get; set; }
+        protected EventState onDragState { get; set; }
+        protected EventState onEndDragState { get; set; }
+        protected EventState onHoverState { get; set; }
+        protected EventState onInitializePotentialDragState { get; set; }
+        protected EventState onNormalState { get; set; }
+        protected EventState onPointerClickState { get; set; }
+        protected EventState onPointerDownState { get; set; }
+        protected EventState onPointerEnterState { get; set; }
+        protected EventState onPointerExitState { get; set; }
+        protected EventState onPointerUpState { get; set; }
+
+        // Further controls the state. If hovering, we play the "Hovering" transition after any of the trigger transitions. Else we play the "Normal" transition after the pointer leaves
+        private bool isHovering = false;
 
         #endregion Private Fields
 
         #region Public Methods
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -69,12 +60,8 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            HandleEventState(_onBeginDragState);
-
-=======
-            _onBeginDrag.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            isHovering = true;
+            HandleEventState(onBeginDragState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnBeginDrag.Replace("%%custom%%", name));
         }
@@ -89,14 +76,8 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            Button i = null;
-
-            HandleEventState(_onDragState);
-
-=======
-            _onDrag.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            isHovering = true;
+            HandleEventState(onDragState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnDrag.Replace("%%custom%%", name));
         }
@@ -111,12 +92,7 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            HandleEventState(_onEndDragState);
-
-=======
-            _onEndDrag.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            HandleEventState(onEndDragState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnEndDrag.Replace("%%custom%%", name));
         }
@@ -131,12 +107,8 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            HandleEventState(_onInitializePotentialDragState);
-
-=======
-            _onIntiializePotentialDrag.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            isHovering = true;
+            HandleEventState(onInitializePotentialDragState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPotentialDragInitialized.Replace("%%custom%%", name));
         }
@@ -152,12 +124,8 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            HandleEventState(_onPointerClickState);
-
-=======
-            _onPointerClick.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            isHovering = true;
+            HandleEventState(onPointerClickState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerClick.Replace("%%custom%%", name));
         }
@@ -167,22 +135,14 @@ namespace Lairinus.UI
             #region Remarks
 
             /*
-<<<<<<< HEAD
              *   Internal use only
              *   ------------------
-=======
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
              *   Called when the user presses the left or right mouse button down
              */
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            HandleEventState(_onPointerDownState);
-
-=======
-            _onPointerDown.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            HandleEventState(onPointerDownState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerDown.Replace("%%custom%%", name));
         }
@@ -192,25 +152,73 @@ namespace Lairinus.UI
             #region Remarks
 
             /*
-<<<<<<< HEAD
              *   Internal use only
              *   ------------------
              *   Called when the mouse pointer enters the graphic element's region
-=======
              *   Called when the user's pointer enters this element's region
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
              */
 
             #endregion Remarks
 
-<<<<<<< HEAD
-            HandleEventState(_onPointerEnterState);
-
-=======
-            _onPointerEnter.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            isHovering = true;
+            HandleEventState(onPointerEnterState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnPointerEnter.Replace("%%custom%%", name));
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   Called when the mouse button leaves the graphic element's region.
+             *   This is also the "normalized" state because this state is the only state that excludes active mouse input
+             *   Called when the user's pointer exits this element's region
+             */
+
+            #endregion Remarks
+
+            isHovering = false;
+            HandleEventState(onPointerExitState);
+            if (_enableDebugging)
+                Debug.Log(Debugger.Debug_OnPointerExit.Replace("%%custom%%", name));
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   Called when the user releases the left or right mouse button while hovered over the graphic element
+             *   Called when the user releases the left or right mouse button up
+             */
+
+            #endregion Remarks
+
+            HandleEventState(onPointerUpState);
+            if (_enableDebugging)
+                Debug.Log(Debugger.Debug_OnPointerUp.Replace("%%custom%%", name));
+        }
+
+        protected virtual void Awake()
+        {
+            cachedRectTransform = (RectTransform)transform;
+            HandleEventState(onNormalState);
+        }
+
+        private void RunEventStateTransitions(EventState eventState, float currentTransitionTime, float totalTransitionTime)
+        {
+            eventState.scaleTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            if (eventState is ImageEventState)
+            {
+                ImageEventState ies = (ImageEventState)eventState;
+                ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+                ies.rotationTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            }
         }
 
         private void HandleEventState(EventState currentEventState)
@@ -226,11 +234,14 @@ namespace Lairinus.UI
 
             #endregion Remarks
 
-            if (_lastTriggeredState != currentEventState)
+            if (lastTriggeredState != currentEventState)
             {
-                _lastTriggeredState = currentEventState;
-                StopCoroutine("HandleEventStateRoutine");
-                StartCoroutine("HandleEventStateRoutine", currentEventState);
+                if (currentEventState.stateEnabled)
+                {
+                    lastTriggeredState = currentEventState;
+                    StopCoroutine("HandleEventStateRoutine");
+                    StartCoroutine("HandleEventStateRoutine", currentEventState);
+                }
             }
         }
 
@@ -250,69 +261,25 @@ namespace Lairinus.UI
             float currentTransitionTime = 0;
             while (currentTransitionTime < totalTransitionTime)
             {
-                eventState.scaleTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+                RunEventStateTransitions(eventState, currentTransitionTime, totalTransitionTime);
 
                 yield return null;
                 currentTransitionTime += Time.deltaTime;
             }
+
+            RunEventStateTransitions(eventState, 1, 1);
+
+            if (isHovering && onHoverState != lastTriggeredState)
+            {
+                HandleEventState(onHoverState);
+            }
+            else if (!isHovering && onNormalState != lastTriggeredState)
+            {
+                HandleEventState(onNormalState);
+            }
         }
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            #region Remarks
-
-            /*
-<<<<<<< HEAD
-             *   Internal use only
-             *   ------------------
-             *   Called when the mouse button leaves the graphic element's region.
-             *   This is also the "normalized" state because this state is the only state that excludes active mouse input
-=======
-             *   Called when the user's pointer exits this element's region
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
-             */
-
-            #endregion Remarks
-
-<<<<<<< HEAD
-            HandleEventState(_normalState);
-
-=======
-            _onPointerExit.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
-            if (_enableDebugging)
-                Debug.Log(Debugger.Debug_OnPointerExit.Replace("%%custom%%", name));
-        }
-
-        private void Awake()
-        {
-            cachedRectTransform = (RectTransform)transform;
-            HandleEventState(_normalState);
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            #region Remarks
-
-            /*
-<<<<<<< HEAD
-             *   Internal use only
-             *   ------------------
-             *   Called when the user releases the left or right mouse button while hovered over the graphic element
-=======
-             *   Called when the user releases the left or right mouse button up
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
-             */
-
-            #endregion Remarks
-
-<<<<<<< HEAD
-=======
-            _onPointerUp.InvokeCallbacks();
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
-            if (_enableDebugging)
-                Debug.Log(Debugger.Debug_OnPointerUp.Replace("%%custom%%", name));
-        }
+        protected Graphic graphicElement { get; set; }
 
         #endregion Public Methods
 
@@ -321,30 +288,43 @@ namespace Lairinus.UI
         [System.Serializable]
         public class EventState
         {
-<<<<<<< HEAD
-            [SerializeField] private float _transitionTime = 0.25F;
-            public float transitionTime { get { return _transitionTime; } set { _transitionTime = value; } }
+            #region Remarks
 
-            [SerializeField] private bool _stateEnabled = true;
-            public bool stateEnabled { get { return _stateEnabled; } set { _stateEnabled = value; } }
+            /*   External and internal use
+             *   -------------------------
+             *
+             */
+
+            #endregion Remarks
+
+            #region Public Properties
+
+            public ScaleTransition scaleTransition { get { return _scaleTransition; } }
+            public RotationTransition rotationTransition { get { return _rotationTransition; } }
 
             // Flow Control - prevents an event handler being called multiple times (useful for persistent events such as OnDrag)
             public bool stateCalculationStarted { get; set; }
 
-            [SerializeField] private ScaleTransition _scaleTransition = new ScaleTransition();
-            public ScaleTransition scaleTransition { get { return _scaleTransition; } }
-=======
-            [SerializeField] private UnityEvent _callback = new UnityEvent();
-            [SerializeField] private bool _stateEnabled = false;
             public bool stateEnabled { get { return _stateEnabled; } set { _stateEnabled = value; } }
-            public UnityEvent callback { get { return _callback; } }
+            public float transitionTime { get { return _transitionTime; } set { _transitionTime = value; } }
 
-            public void InvokeCallbacks()
-            {
-                if (_stateEnabled)
-                    _callback.Invoke();
-            }
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
+            #endregion Public Properties
+
+            #region Private Fields
+
+            [SerializeField] protected bool _stateEnabled = true;
+            [SerializeField] protected float _transitionTime = 0.25F;
+            [SerializeField] protected ScaleTransition _scaleTransition = new ScaleTransition();
+            [SerializeField] protected RotationTransition _rotationTransition = new RotationTransition();
+
+            #endregion Private Fields
+        }
+
+        [System.Serializable]
+        public class ImageEventState : EventState
+        {
+            [SerializeField] private ImageColorTransition _imageColorTransition = new ImageColorTransition();
+            public ImageColorTransition imageColorTransition { get { return _imageColorTransition; } }
         }
 
         #endregion Public Classes
@@ -370,25 +350,12 @@ namespace Lairinus.UI
             public static readonly string Debug_OnPointerDown = "UIEventState on GameObject %%custom%% => Registered POINTER DOWN";
             public static readonly string Debug_OnPointerEnter = "UIEventState on GameObject %%custom%% => Registered POINTER ENTER";
             public static readonly string Debug_OnPointerExit = "UIEventState on GameObject %%custom%% => Registered POINTER EXIT";
-<<<<<<< HEAD
-            public static readonly string Debug_OnBeginDrag = "UIEventState on GameObject %%custom%% => Registered BEGIN DRAG";
-            public static readonly string Debug_OnEndDrag = "UIEventState on GameObject %%custom%% => Registered END DRAG";
-            public static readonly string Debug_OnDrag = "UIEventState on GameObject %%custom%% => Registered DRAG";
-            public static readonly string Debug_OnPointerHover = "UIEventState on GameObject %%custom%% => Registered HOVER";
-=======
             public static readonly string Debug_OnPointerUp = "UIEventState on GameObject %%custom%% => Registered POINTER UP";
->>>>>>> a07e4b68bb2d244226c548314a13c2cb3076f7de
             public static readonly string Debug_OnPotentialDragInitialized = "UIEventState on GameObject %%custom%% => Registered POTENTIAL DRAG INITIALIZED";
 
             #endregion Public Fields
         }
 
         #endregion Private Classes
-
-        Graphic graphic = null;
-        private void Awake()
-        {
-            graphic = GetComponent<Graphic>();        
-        }
     }
 }
