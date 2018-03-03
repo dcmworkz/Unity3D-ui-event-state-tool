@@ -6,11 +6,11 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Lairinus.UI
+namespace Lairinus.UI.Events
 {
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Graphic))]
-    public partial class UIEventState : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IInitializePotentialDragHandler
+    public partial class UIEventState : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         #region Remarks
 
@@ -29,22 +29,19 @@ namespace Lairinus.UI
         #region Private Fields
 
         public RectTransform cachedRectTransform { get; private set; }
-        [SerializeField] private bool _enableDebugging = false;
-        private EventState lastTriggeredState = null;
         protected EventState onBeginDragState { get; set; }
         protected EventState onDragState { get; set; }
         protected EventState onEndDragState { get; set; }
         protected EventState onHoverState { get; set; }
-        protected EventState onInitializePotentialDragState { get; set; }
         protected EventState onNormalState { get; set; }
         protected EventState onPointerClickState { get; set; }
         protected EventState onPointerDownState { get; set; }
         protected EventState onPointerEnterState { get; set; }
         protected EventState onPointerExitState { get; set; }
         protected EventState onPointerUpState { get; set; }
-
-        // Further controls the state. If hovering, we play the "Hovering" transition after any of the trigger transitions. Else we play the "Normal" transition after the pointer leaves
+        [SerializeField] private bool _enableDebugging = false;
         private bool isHovering = false;
+        private EventState lastTriggeredState = null;
 
         #endregion Private Fields
 
@@ -55,6 +52,8 @@ namespace Lairinus.UI
             #region Remarks
 
             /*
+             *   Internal use only
+             *   ------------------
              *   Called the moment the user drags the mouse with left or right click held down
              */
 
@@ -71,6 +70,8 @@ namespace Lairinus.UI
             #region Remarks
 
             /*
+             *   Internal use only
+             *   ------------------
              *   Called while the user is pressing the left or the mouse button down while moving their mouse
              */
 
@@ -87,6 +88,8 @@ namespace Lairinus.UI
             #region Remarks
 
             /*
+             *   Internal use only
+             *   ------------------
              *   Called the moment after the user lets up on their mouse after dragging
              */
 
@@ -97,22 +100,6 @@ namespace Lairinus.UI
                 Debug.Log(Debugger.Debug_OnEndDrag.Replace("%%custom%%", name));
 
             Toggle t = null;
-        }
-
-        public void OnInitializePotentialDrag(PointerEventData eventData)
-        {
-            #region Remarks
-
-            /*
-             *   Similar to OnPointerDown. Called when the left or right mouse button is pressed down. Called after the OnPointerDown event
-             */
-
-            #endregion Remarks
-
-            isHovering = true;
-            HandleEventState(onInitializePotentialDragState);
-            if (_enableDebugging)
-                Debug.Log(Debugger.Debug_OnPotentialDragInitialized.Replace("%%custom%%", name));
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -157,7 +144,6 @@ namespace Lairinus.UI
              *   Internal use only
              *   ------------------
              *   Called when the mouse pointer enters the graphic element's region
-             *   Called when the user's pointer enters this element's region
              */
 
             #endregion Remarks
@@ -177,7 +163,6 @@ namespace Lairinus.UI
              *   ------------------
              *   Called when the mouse button leaves the graphic element's region.
              *   This is also the "normalized" state because this state is the only state that excludes active mouse input
-             *   Called when the user's pointer exits this element's region
              */
 
             #endregion Remarks
@@ -196,7 +181,6 @@ namespace Lairinus.UI
              *   Internal use only
              *   ------------------
              *   Called when the user releases the left or right mouse button while hovered over the graphic element
-             *   Called when the user releases the left or right mouse button up
              */
 
             #endregion Remarks
@@ -206,26 +190,22 @@ namespace Lairinus.UI
                 Debug.Log(Debugger.Debug_OnPointerUp.Replace("%%custom%%", name));
         }
 
+        protected Graphic graphicElement { get; set; }
+
         protected virtual void Awake()
         {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   The same as a "new Class()" constructor in non-MonoBehaviours
+             */
+
+            #endregion Remarks
+
             cachedRectTransform = (RectTransform)transform;
             HandleEventState(onNormalState);
-        }
-
-        private void RunEventStateTransitions(EventState eventState, float currentTransitionTime, float totalTransitionTime)
-        {
-            eventState.scaleTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            eventState.rotationTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            if (eventState is ImageEventState)
-            {
-                ImageEventState ies = (ImageEventState)eventState;
-                ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            }
-            else if (eventState is TextEventState)
-            {
-                TextEventState tes = (TextEventState)eventState;
-                tes.colorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            }
         }
 
         private void HandleEventState(EventState currentEventState)
@@ -266,6 +246,7 @@ namespace Lairinus.UI
 
             float totalTransitionTime = eventState.transitionTime;
             float currentTransitionTime = 0;
+            eventState.onStateEnterEvent.Invoke();
             while (currentTransitionTime < totalTransitionTime)
             {
                 RunEventStateTransitions(eventState, currentTransitionTime, totalTransitionTime);
@@ -286,7 +267,49 @@ namespace Lairinus.UI
             }
         }
 
-        protected Graphic graphicElement { get; set; }
+        private void RunEventStateTransitions(EventState eventState, float currentTransitionTime, float totalTransitionTime)
+        {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   Processes all transitions for the Graphic element attached to this UIEventState component
+             */
+
+            #endregion Remarks
+
+            eventState.scaleTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            eventState.rotationTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            if (eventState is ImageEventState)
+            {
+                ImageEventState ies = (ImageEventState)eventState;
+                ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            }
+            else if (eventState is TextEventState)
+            {
+                TextEventState tes = (TextEventState)eventState;
+                tes.colorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+                tes.fontSizeTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            }
+        }
+
+        private void OnEnable()
+        {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   Resets the state of this Graphic object once it becomes active
+             */
+
+            #endregion Remarks
+
+            isHovering = false;
+            if (onNormalState != null)
+                HandleEventState(onNormalState);
+        }
 
         #endregion Public Methods
 
