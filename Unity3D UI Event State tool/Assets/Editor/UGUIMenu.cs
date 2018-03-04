@@ -1,38 +1,50 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-public class UGUIMenu : MonoBehaviour
+namespace Lairinus.UI
 {
-    [MenuItem("Lairinus UI/Anchor Around Object")]
-    private static void uGUIAnchorAroundObject()
+    public class UGUIMenu : MonoBehaviour
     {
-        foreach (GameObject go in Selection.gameObjects)
+        [MenuItem("Lairinus/UI/Place Anchors in Corners")]
+        private static void uGUIAnchorAroundObject()
         {
-            var o = go;
-            if (o != null && o.GetComponent<RectTransform>() != null)
+            #region Remarks
+
+            /*
+             * Places the object's anchors in the UI Element's Rect corners.
+             * This allows UI elements to automatically resize
+             */
+
+            #endregion Remarks
+
+            foreach (GameObject go in Selection.gameObjects)
             {
-                var r = o.GetComponent<RectTransform>();
-                var p = o.transform.parent.GetComponent<RectTransform>();
+                var o = go;
+                if (o != null && o.GetComponent<RectTransform>() != null)
+                {
+                    var r = o.GetComponent<RectTransform>();
+                    var p = o.transform.parent.GetComponent<RectTransform>();
 
-                var offsetMin = r.offsetMin;
-                var offsetMax = r.offsetMax;
-                var _anchorMin = r.anchorMin;
-                var _anchorMax = r.anchorMax;
+                    var offsetMin = r.offsetMin;
+                    var offsetMax = r.offsetMax;
+                    var _anchorMin = r.anchorMin;
+                    var _anchorMax = r.anchorMax;
 
-                var parent_width = p.rect.width;
-                var parent_height = p.rect.height;
+                    var parent_width = p.rect.width;
+                    var parent_height = p.rect.height;
 
-                var anchorMin = new Vector2(_anchorMin.x + (offsetMin.x / parent_width),
-                                            _anchorMin.y + (offsetMin.y / parent_height));
-                var anchorMax = new Vector2(_anchorMax.x + (offsetMax.x / parent_width),
-                                            _anchorMax.y + (offsetMax.y / parent_height));
+                    var anchorMin = new Vector2(_anchorMin.x + (offsetMin.x / parent_width),
+                                                _anchorMin.y + (offsetMin.y / parent_height));
+                    var anchorMax = new Vector2(_anchorMax.x + (offsetMax.x / parent_width),
+                                                _anchorMax.y + (offsetMax.y / parent_height));
 
-                r.anchorMin = anchorMin;
-                r.anchorMax = anchorMax;
+                    r.anchorMin = anchorMin;
+                    r.anchorMax = anchorMax;
 
-                r.offsetMin = new Vector2(0, 0);
-                r.offsetMax = new Vector2(0, 0);
-                r.pivot = new Vector2(0.5f, 0.5f);
+                    r.offsetMin = new Vector2(0, 0);
+                    r.offsetMax = new Vector2(0, 0);
+                    r.pivot = new Vector2(0.5f, 0.5f);
+                }
             }
         }
     }

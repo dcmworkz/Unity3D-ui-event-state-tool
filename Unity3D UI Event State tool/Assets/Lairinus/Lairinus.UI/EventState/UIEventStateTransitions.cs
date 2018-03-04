@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Lairinus.UI.Events
 {
@@ -37,7 +34,7 @@ namespace Lairinus.UI.Events
 
             #region Public Properties
 
-            public bool ignoreTransiton { get { return _ignoreTransition; } set { _ignoreTransition = value; } }
+            public bool disableTransition { get { return _disableTransition; } set { _disableTransition = value; } }
 
             #endregion Public Properties
 
@@ -55,7 +52,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_ignoreTransition)
+                if (_disableTransition)
                     return;
             }
 
@@ -64,7 +61,7 @@ namespace Lairinus.UI.Events
             #region Protected Fields
 
             // If true, this will ignore the transition time for the elements and snap directly to a certain scale.
-            [SerializeField] protected bool _ignoreTransition = false;
+            [SerializeField] protected bool _disableTransition = false;
 
             #endregion Protected Fields
         }
@@ -83,21 +80,19 @@ namespace Lairinus.UI.Events
 
             #region Public Properties
 
+            public float allowedTransitionTime { get { return _allowedTransitionTime; } set { _allowedTransitionTime = value; } }
             public UnityEvent onStateEnterEvent { get { return _onStateEnterEvent; } }
-            public RotationTransition rotationTransition { get { return _rotationTransition; } }
-            public ScaleTransition scaleTransition { get { return _scaleTransition; } }
-            public bool stateEnabled { get { return _stateEnabled; } set { _stateEnabled = value; } }
-            public float transitionTime { get { return _transitionTime; } set { _transitionTime = value; } }
+            public RotationTransition transitionRotation { get { return _transitionRotation; } }
+            public ScaleTransition transitionScale { get { return _transitionScale; } }
 
             #endregion Public Properties
 
             #region Private Fields
 
+            [SerializeField] protected float _allowedTransitionTime = 0.25F;
             [SerializeField] protected UnityEvent _onStateEnterEvent = new UnityEvent();
-            [SerializeField] protected RotationTransition _rotationTransition = new RotationTransition();
-            [SerializeField] protected ScaleTransition _scaleTransition = new ScaleTransition();
-            [SerializeField] protected bool _stateEnabled = true;
-            [SerializeField] protected float _transitionTime = 0.25F;
+            [SerializeField] protected RotationTransition _transitionRotation = new RotationTransition();
+            [SerializeField] protected ScaleTransition _transitionScale = new ScaleTransition();
 
             #endregion Private Fields
         }
@@ -134,7 +129,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_ignoreTransition)
+                if (_disableTransition)
                     return;
 
                 Image image = null;
@@ -221,7 +216,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_ignoreTransition)
+                if (_disableTransition)
                     return;
 
                 if (eventStateElement != null)
@@ -273,7 +268,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_ignoreTransition)
+                if (_disableTransition)
                     return;
 
                 if (eventStateElement != null)
@@ -325,7 +320,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_ignoreTransition)
+                if (_disableTransition)
                     return;
 
                 Text text = null;
@@ -369,15 +364,15 @@ namespace Lairinus.UI.Events
 
             #region Public Properties
 
-            public TextColorTransition colorTransition { get { return _colorTransition; } }
-            public TextFontSizeTransition fontSizeTransition { get { return _fontSizeTransition; } }
+            public TextColorTransition transitionColor { get { return _transitionColor; } }
+            public TextFontSizeTransition transitionFontSize { get { return _transitionFontSize; } }
 
             #endregion Public Properties
 
             #region Private Fields
 
-            [SerializeField] private TextColorTransition _colorTransition = new TextColorTransition();
-            [SerializeField] private TextFontSizeTransition _fontSizeTransition = new TextFontSizeTransition();
+            [SerializeField] private TextColorTransition _transitionColor = new TextColorTransition();
+            [SerializeField] private TextFontSizeTransition _transitionFontSize = new TextFontSizeTransition();
 
             #endregion Private Fields
         }
@@ -405,7 +400,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_ignoreTransition)
+                if (_disableTransition)
                     return;
 
                 Text text = null;

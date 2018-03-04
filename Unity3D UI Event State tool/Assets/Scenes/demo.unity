@@ -198,8 +198,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 508838729}
-  - {fileID: 985300707}
+  - {fileID: 1028761524}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,17 +207,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &508838728
+--- !u!1 &1028761523
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 508838729}
-  - component: {fileID: 508838732}
-  - component: {fileID: 508838731}
-  - component: {fileID: 508838730}
+  - component: {fileID: 1028761524}
+  - component: {fileID: 1028761527}
+  - component: {fileID: 1028761526}
+  - component: {fileID: 1028761525}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -226,12 +225,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &508838729
+--- !u!224 &1028761524
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508838728}
+  m_GameObject: {fileID: 1028761523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -239,17 +238,17 @@ RectTransform:
   m_Father: {fileID: 170944661}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.29166666, y: 0.16666667}
-  m_AnchorMax: {x: 0.7083333, y: 0.8333333}
+  m_AnchorMin: {x: 0.31965002, y: 0.3301051}
+  m_AnchorMax: {x: 0.42381668, y: 0.49677178}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &508838730
+--- !u!114 &1028761525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508838728}
+  m_GameObject: {fileID: 1028761523}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b418c9dfbd4bfa4ea0df4bb5d4f8ad4, type: 3}
@@ -257,209 +256,177 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enableDebugging: 0
   _onBeginDragState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 985300706}
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
+      _disableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
   _onDragState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
+      _disableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
   _onEndDragState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 985300706}
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 0, b: 0, a: 1}
+      _disableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
   _onHoverState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 180}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 0.07586217, g: 1, b: 0, a: 1}
+      _disableTransition: 0
+      _finalColor: {r: 0.19999993, g: 1, b: 0, a: 1}
   _onNormalState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+      _disableTransition: 0
+      _finalColor: {r: 1, g: 0, b: 0, a: 1}
   _onPointerClickState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 1
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+      _disableTransition: 0
+      _finalColor: {r: 0, g: 0.08965492, b: 1, a: 1}
   _onPointerDownState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 1
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
+      _disableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
   _onPointerEnterState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 1
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
+      _disableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
   _onPointerExitState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
+      _disableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
   _onPointerUpState:
+    _allowedTransitionTime: 0.25
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
+    _transitionRotation:
+      _disableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
+    _transitionScale:
+      _disableTransition: 0
       _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
     _imageColorTransition:
-      _ignoreTransition: 0
+      _disableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &508838731
+--- !u!114 &1028761526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508838728}
+  m_GameObject: {fileID: 1028761523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 0bab2d33f9b231b4ca1442d3d61db8d4, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -475,299 +442,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!222 &508838732
+--- !u!222 &1028761527
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508838728}
---- !u!1 &985300706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 985300707}
-  - component: {fileID: 985300710}
-  - component: {fileID: 985300709}
-  - component: {fileID: 985300708}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &985300707
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 985300706}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 170944661}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.057291668, y: 0.34968337}
-  m_AnchorMax: {x: 0.22395833, y: 0.73165}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &985300708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 985300706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f22c6836473646943f3761394ff5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enableDebugging: 0
-  _onBeginDragState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onDragState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onEndDragState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onHoverState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 1
-      _finalRotation: {x: 0, y: 0, z: 180}
-    _scaleTransition:
-      _ignoreTransition: 1
-      _finalScale: {x: 2, y: 2}
-    _stateEnabled: 1
-    _transitionTime: 1
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 0.4482758, g: 1, b: 0, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 30
-  _onNormalState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onPointerClickState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onPointerDownState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onPointerEnterState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onPointerExitState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
-  _onPointerUpState:
-    _onStateEnterEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    _rotationTransition:
-      _ignoreTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
-    _scaleTransition:
-      _ignoreTransition: 0
-      _finalScale: {x: 1, y: 1}
-    _stateEnabled: 1
-    _transitionTime: 0.25
-    _colorTransition:
-      _ignoreTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
-    _fontSizeTransition:
-      _ignoreTransition: 0
-      _finalFontSize: 14
---- !u!114 &985300709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 985300706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: New Text
---- !u!222 &985300710
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 985300706}
+  m_GameObject: {fileID: 1028761523}
 --- !u!1 &1210563912
 GameObject:
   m_ObjectHideFlags: 0

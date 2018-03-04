@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -98,8 +95,6 @@ namespace Lairinus.UI.Events
             HandleEventState(onEndDragState);
             if (_enableDebugging)
                 Debug.Log(Debugger.Debug_OnEndDrag.Replace("%%custom%%", name));
-
-            Toggle t = null;
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -208,6 +203,22 @@ namespace Lairinus.UI.Events
             HandleEventState(onNormalState);
         }
 
+        protected virtual void Start()
+        {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   Called directly after Awake()
+             */
+
+            #endregion Remarks
+
+            if (graphicElement != null)
+                graphicElement.raycastTarget = true;
+        }
+
         private void HandleEventState(EventState currentEventState)
         {
             #region Remarks
@@ -223,12 +234,9 @@ namespace Lairinus.UI.Events
 
             if (lastTriggeredState != currentEventState)
             {
-                if (currentEventState.stateEnabled)
-                {
-                    lastTriggeredState = currentEventState;
-                    StopCoroutine("HandleEventStateRoutine");
-                    StartCoroutine("HandleEventStateRoutine", currentEventState);
-                }
+                lastTriggeredState = currentEventState;
+                StopCoroutine("HandleEventStateRoutine");
+                StartCoroutine("HandleEventStateRoutine", currentEventState);
             }
         }
 
@@ -244,7 +252,7 @@ namespace Lairinus.UI.Events
 
             #endregion Remarks
 
-            float totalTransitionTime = eventState.transitionTime;
+            float totalTransitionTime = eventState.allowedTransitionTime;
             float currentTransitionTime = 0;
             eventState.onStateEnterEvent.Invoke();
             while (currentTransitionTime < totalTransitionTime)
@@ -265,33 +273,9 @@ namespace Lairinus.UI.Events
             {
                 HandleEventState(onNormalState);
             }
-        }
-
-        private void RunEventStateTransitions(EventState eventState, float currentTransitionTime, float totalTransitionTime)
-        {
-            #region Remarks
-
-            /*
-             *   Internal use only
-             *   ------------------
-             *   Processes all transitions for the Graphic element attached to this UIEventState component
-             */
-
-            #endregion Remarks
-
-            eventState.scaleTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            eventState.rotationTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            if (eventState is ImageEventState)
-            {
-                ImageEventState ies = (ImageEventState)eventState;
-                ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            }
-            else if (eventState is TextEventState)
-            {
-                TextEventState tes = (TextEventState)eventState;
-                tes.colorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-                tes.fontSizeTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            }
+            else if (isHovering)
+                HandleEventState(onHoverState);
+            else HandleEventState(onNormalState);
         }
 
         private void OnEnable()
@@ -309,6 +293,33 @@ namespace Lairinus.UI.Events
             isHovering = false;
             if (onNormalState != null)
                 HandleEventState(onNormalState);
+        }
+
+        private void RunEventStateTransitions(EventState eventState, float currentTransitionTime, float totalTransitionTime)
+        {
+            #region Remarks
+
+            /*
+             *   Internal use only
+             *   ------------------
+             *   Processes all transitions for the Graphic element attached to this UIEventState component
+             */
+
+            #endregion Remarks
+
+            eventState.transitionScale.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            eventState.transitionRotation.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            if (eventState is ImageEventState)
+            {
+                ImageEventState ies = (ImageEventState)eventState;
+                ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            }
+            else if (eventState is TextEventState)
+            {
+                TextEventState tes = (TextEventState)eventState;
+                tes.transitionColor.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+                tes.transitionFontSize.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            }
         }
 
         #endregion Public Methods
