@@ -61,16 +61,16 @@ namespace Lairinus.UI.Events
 
             // Add all of the event states to a Dictionary for easy access
             eventStatesCollection = new Dictionary<EventType, EventState>();
-            eventStatesCollection.Add(onHoverState.eventType, onHoverState);
-            eventStatesCollection.Add(onNormalState.eventType, onNormalState);
-            eventStatesCollection.Add(onPointerEnterState.eventType, onPointerEnterState);
-            eventStatesCollection.Add(onPointerExitState.eventType, onPointerExitState);
-            eventStatesCollection.Add(onPointerDownState.eventType, onPointerDownState);
-            eventStatesCollection.Add(onPointerUpState.eventType, onPointerUpState);
-            eventStatesCollection.Add(onPointerClickState.eventType, onPointerClickState);
-            eventStatesCollection.Add(onBeginDragState.eventType, onBeginDragState);
-            eventStatesCollection.Add(onEndDragState.eventType, onEndDragState);
-            eventStatesCollection.Add(onDragState.eventType, onDragState);
+            eventStatesCollection.Add(EventType.OnHover, onHoverState);
+            eventStatesCollection.Add(EventType.OnNormal, onNormalState);
+            eventStatesCollection.Add(EventType.OnPointerEnter, onPointerEnterState);
+            eventStatesCollection.Add(EventType.OnPointerExit, onPointerExitState);
+            eventStatesCollection.Add(EventType.OnPointerDown, onPointerDownState);
+            eventStatesCollection.Add(EventType.OnPointerUp, onPointerUpState);
+            eventStatesCollection.Add(EventType.OnPointerClick, onPointerClickState);
+            eventStatesCollection.Add(EventType.OnBeginDrag, onBeginDragState);
+            eventStatesCollection.Add(EventType.OnEndDrag, onEndDragState);
+            eventStatesCollection.Add(EventType.OnDrag, onDragState);
         }
 
         #endregion Protected Methods

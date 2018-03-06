@@ -60,7 +60,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_enableTransition)
+                if (!_enableTransition)
                     return;
 
                 if (eventStateElement == null)
@@ -97,7 +97,7 @@ namespace Lairinus.UI.Events
             #region Public Properties
 
             public float allowedTransitionTime { get { return _allowedTransitionTime; } set { _allowedTransitionTime = value; } }
-            public UnityEvent onStateEnterEvent { get { return _onStateEnterEvent; } }
+            public UnityEvent onStateEnterEvent { get { return _onStateEnterEvent; } set { _onStateEnterEvent = value; } }
             public RotationTransition transitionRotation { get { return _transitionRotation; } }
             public ScaleTransition transitionScale { get { return _transitionScale; } }
 
@@ -149,7 +149,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_enableTransition)
+                if (!_enableTransition)
                     return;
 
                 Image image = null;
@@ -272,7 +272,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_enableTransition)
+                if (!_enableTransition)
                     return;
 
                 base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
@@ -356,7 +356,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_enableTransition)
+                if (!_enableTransition)
                     return;
 
                 if (eventStateElement != null)
@@ -468,7 +468,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_enableTransition)
+                if (!_enableTransition)
                     return;
 
                 Text text = null;
@@ -561,7 +561,7 @@ namespace Lairinus.UI.Events
 
                 #endregion Remarks
 
-                if (_enableTransition)
+                if (!_enableTransition)
                     return;
 
                 Text text = null;

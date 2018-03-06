@@ -37,6 +37,8 @@ namespace Lairinus.UI.Events
         public EventType selectedEventTypeInternal { get; set; }
         public EventTransitionType selectedEventTransitionInternal { get; set; }
         public Dictionary<EventType, EventState> eventStatesCollection { get; protected set; }
+        public EventState previousEventState { get; protected set; }
+        public EventState currentEventState { get; protected set; }
 
         #region Remarks
 
@@ -383,9 +385,24 @@ namespace Lairinus.UI.Events
 
         #endregion Private Classes
 
+        public void VisualizeTransitionInternal(EventState eventState)
+        {
+            if (currentEventState != eventState)
+            {
+                previousEventState = currentEventState;
+                currentEventState = eventState;
+            }
+
+            RunEventStateTransitions(eventState, 1, 1);
+        }
+
         public void Initialize()
         {
             Awake();
+        }
+
+        private void Update()
+        {
         }
     }
 }

@@ -20,6 +20,7 @@ public class UIImageEventStateEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        GUI_CreateElementHeaderUI();
         _imageEventState.selectedEventTypeInternal = (UIEventState.EventType)EditorGUILayout.EnumPopup("Pointer Event", _imageEventState.selectedEventTypeInternal);
 
         UIEventState.EventState foundEventState = null;
@@ -32,7 +33,6 @@ public class UIImageEventStateEditor : Editor
         if (foundEventState != null)
         {
             foundEventState.allowedTransitionTime = EditorGUILayout.FloatField("Total Transition Time", foundEventState.allowedTransitionTime);
-            _imageEventState.selectedEventTransitionInternal = (UIEventState.EventTransitionType)EditorGUILayout.EnumPopup("Transition", _imageEventState.selectedEventTransitionInternal);
             ShowPropertyConfiguration(foundEventState);
         }
         else
@@ -46,8 +46,9 @@ public class UIImageEventStateEditor : Editor
 
         // Show Base Properties
         UIEventState.EventTransitionType transitionType = _imageEventState.selectedEventTransitionInternal;
+        GUI_ShowTransitionSelectionUI();
         if (eventState.eventTransitionCollection.ContainsKey(transitionType))
-            ShowBasePropertyConfiguration(eventState.eventTransitionCollection[transitionType]);
+            GUI_ShowBasePropertyConfiguration(eventState.eventTransitionCollection[transitionType]);
 
         switch (_imageEventState.selectedEventTransitionInternal)
         {
@@ -83,15 +84,42 @@ public class UIImageEventStateEditor : Editor
                     ShowImageColorPropertyConfiguration(_imageColorTransition);
                 }
                 break;
+
+            case UIEventState.EventTransitionType.ImageSpriteAndFill:
+                {
+                    // ----- Show Image Sprite in Custom Inspector ---- //
+                    UIEventState.ImageSpriteTransition _imageSpriteAndFillTransition = null;
+                    if (eventState.eventTransitionCollection.ContainsKey(_imageEventState.selectedEventTransitionInternal))
+                        _imageSpriteAndFillTransition = (UIEventState.ImageSpriteTransition)eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal];
+
+                    ShowImageSpriteAndFillPropertyConfiguration(_imageSpriteAndFillTransition);
+                }
+                break;
         }
+
+        ShowActionableUI(eventState);
     }
 
-    private void ShowBasePropertyConfiguration(UIEventState.BaseTransition transition)
+    private void GUI_CreateElementHeaderUI()
+    {
+        GUILayout.Space(25);
+        GUILayout.Label(new GUIContent("Lairinus Image Event State\n    1. Select a Pointer Event\n    2. Select a Transition to modify\n    3. Click the \"Visualize Transition\" button to see it in action "));
+        GUILayout.Space(25);
+    }
+
+    private void GUI_ShowBasePropertyConfiguration(UIEventState.BaseTransition transition)
     {
         if (transition != null)
         {
             transition.enableTransition = EditorGUILayout.Toggle("Enable Transition", transition.enableTransition);
         }
+    }
+
+    private void GUI_ShowTransitionSelectionUI()
+    {
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GUILayout.Space(5);
+        _imageEventState.selectedEventTransitionInternal = (UIEventState.EventTransitionType)EditorGUILayout.EnumPopup("Transition", _imageEventState.selectedEventTransitionInternal);
     }
 
     private void ShowRotationPropertyConfiguration(UIEventState.RotationTransition rotationTransition)
@@ -122,5 +150,37 @@ public class UIImageEventStateEditor : Editor
         }
         else
             Debug.LogError("Error: The Image Color Transition property attached to the " + _imageEventState.name + " GameObject is NULL! Ensure you aren't setting this null!");
+    }
+
+    private void ShowImageSpriteAndFillPropertyConfiguration(UIEventState.ImageSpriteTransition spriteAndFillTransition)
+    {
+        if (spriteAndFillTransition != null)
+        {
+            spriteAndFillTransition.finalSprite = (Sprite)EditorGUILayout.ObjectField("Final Sprite", spriteAndFillTransition.finalSprite, typeof(Sprite), true);
+            spriteAndFillTransition.useImageFill = EditorGUILayout.Toggle("Use Image Fill", spriteAndFillTransition.useImageFill);
+            spriteAndFillTransition.fillType = (UIEventState.ImageSpriteTransition.FillType)EditorGUILayout.EnumPopup("Image Fill Type", spriteAndFillTransition.fillType);
+            spriteAndFillTransition.fillMethod = (UnityEngine.UI.Image.FillMethod)EditorGUILayout.EnumPopup("Image Fill Method", spriteAndFillTransition.fillMethod);
+        }
+        else
+            Debug.LogError("Error: The Image Color Transition property attached to the " + _imageEventState.name + " GameObject is NULL! Ensure you aren't setting this null!");
+    }
+
+    private void ShowActionableUI(UIEventState.EventState eventState)
+    {
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GUILayout.Space(20);
+        GUIContent labelContent = new GUIContent("This label is a good label");
+        GUILayout.Label(labelContent);
+        if (GUILayout.Button("Visualize Transition", GUILayout.Height(25)))
+        {
+            Debug.Log("Ok");
+            _imageEventState.VisualizeTransitionInternal(eventState);
+        }
+
+        if (GUILayout.Button("Set Previous Transition", GUILayout.Height(25)))
+        {
+            Debug.Log("Ok");
+            _imageEventState.VisualizeTransitionInternal(_imageEventState.previousEventState);
+        }
     }
 }
