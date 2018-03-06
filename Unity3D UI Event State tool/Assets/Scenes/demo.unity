@@ -198,7 +198,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1028761524}
+  - {fileID: 1870482366}
+  - {fileID: 1645207305}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,17 +208,125 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1028761523
+--- !u!1 &247159238
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1028761524}
-  - component: {fileID: 1028761527}
-  - component: {fileID: 1028761526}
-  - component: {fileID: 1028761525}
+  - component: {fileID: 247159239}
+  - component: {fileID: 247159241}
+  - component: {fileID: 247159240}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &247159239
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247159238}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 348439780}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.20794985, y: 0.16785012}
+  m_AnchorMax: {x: 0.79204994, y: 0.8321501}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0000019073486, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &247159240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247159238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Color
+--- !u!222 &247159241
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247159238}
+--- !u!1 &325157845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 325157846}
+  m_Layer: 5
+  m_Name: NormalHover.Scale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &325157846
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325157845}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1602237356}
+  m_Father: {fileID: 1645207305}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.49963543, y: 0.3333333}
+  m_AnchorMax: {x: 0.6038021, y: 0.49999997}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &348439779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 348439780}
+  - component: {fileID: 348439783}
+  - component: {fileID: 348439782}
+  - component: {fileID: 348439781}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -225,30 +334,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1028761524
+--- !u!224 &348439780
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028761523}
+  m_GameObject: {fileID: 348439779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 170944661}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children:
+  - {fileID: 247159239}
+  m_Father: {fileID: 1921817097}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.31965002, y: 0.3301051}
-  m_AnchorMax: {x: 0.42381668, y: 0.49677178}
+  m_AnchorMin: {x: -0.00000020220875, y: -0.00000005364418}
+  m_AnchorMax: {x: 0.9999999, y: 0.99999994}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1028761525
+--- !u!114 &348439781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028761523}
+  m_GameObject: {fileID: 348439779}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b418c9dfbd4bfa4ea0df4bb5d4f8ad4, type: 3}
@@ -263,14 +373,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onDragState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -279,14 +395,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onEndDragState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -295,30 +417,42 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onHoverState:
-    _allowedTransitionTime: 0.25
+    _allowedTransitionTime: 1
     _onStateEnterEvent:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
-      _finalScale: {x: 1, y: 1}
+      _enableTransition: 1
+      _finalScale: {x: 1.25, y: 1.25}
     _imageColorTransition:
-      _disableTransition: 0
-      _finalColor: {r: 0.19999993, g: 1, b: 0, a: 1}
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 1, b: 0.08965516, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onNormalState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -327,14 +461,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
-      _finalRotation: {x: 0, y: 0, z: 0}
+      _enableTransition: 0
+      _finalRotation: {x: 25, y: 25, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
-      _finalColor: {r: 1, g: 0, b: 0, a: 1}
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onPointerClickState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -343,14 +483,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
-      _finalColor: {r: 0, g: 0.08965492, b: 1, a: 1}
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onPointerDownState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -359,14 +505,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onPointerEnterState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -375,14 +527,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8758622, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onPointerExitState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -391,14 +549,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8745098, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
   _onPointerUpState:
     _allowedTransitionTime: 0.25
     _onStateEnterEvent:
@@ -407,20 +571,26 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     _transitionRotation:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalRotation: {x: 0, y: 0, z: 0}
     _transitionScale:
-      _disableTransition: 0
+      _enableTransition: 1
       _finalScale: {x: 1, y: 1}
     _imageColorTransition:
-      _disableTransition: 0
+      _enableTransition: 0
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1028761526
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+--- !u!114 &348439782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028761523}
+  m_GameObject: {fileID: 348439779}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -442,12 +612,496 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!222 &1028761527
+--- !u!222 &348439783
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028761523}
+  m_GameObject: {fileID: 348439779}
+--- !u!1 &676769584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 676769585}
+  m_Layer: 5
+  m_Name: NormalHover.TextColorChange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &676769585
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676769584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1573555696}
+  m_Father: {fileID: 1645207305}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.6600521, y: 0.33333334}
+  m_AnchorMax: {x: 0.76421875, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &733679297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 733679298}
+  - component: {fileID: 733679300}
+  - component: {fileID: 733679299}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &733679298
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733679297}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1870482366}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.0849279, y: 0.15172414}
+  m_AnchorMax: {x: 0.9150721, y: 0.84827584}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &733679299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733679297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &733679300
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733679297}
+--- !u!1 &737701795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 737701796}
+  - component: {fileID: 737701799}
+  - component: {fileID: 737701798}
+  - component: {fileID: 737701797}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &737701796
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737701795}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1398930872}
+  m_Father: {fileID: 1342711103}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: -0.00000020220875, y: -0.00000005364418}
+  m_AnchorMax: {x: 0.9999999, y: 0.99999994}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &737701797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737701795}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b418c9dfbd4bfa4ea0df4bb5d4f8ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDebugging: 0
+  _onBeginDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onEndDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onHoverState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 1, b: 0.08965516, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onNormalState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerClickState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerDownState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerEnterState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8758622, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerExitState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8745098, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerUpState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+--- !u!114 &737701798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737701795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &737701799
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737701795}
+--- !u!1 &1093151260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1093151261}
+  - component: {fileID: 1093151263}
+  - component: {fileID: 1093151262}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1093151261
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093151260}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1799533228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.20794985, y: 0.16785012}
+  m_AnchorMax: {x: 0.79204994, y: 0.8321501}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0000019073486, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1093151262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093151260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Rotation
+--- !u!222 &1093151263
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093151260}
 --- !u!1 &1210563912
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +1164,1621 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1218469583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1218469584}
+  - component: {fileID: 1218469587}
+  - component: {fileID: 1218469586}
+  - component: {fileID: 1218469585}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1218469584
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218469583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1573555696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: -0.00000023007392, y: 0.00000014245511}
+  m_AnchorMax: {x: 0.9999999, y: 1.0000001}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1218469585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218469583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645f22c6836473646943f3761394ff5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDebugging: 0
+  _onBeginDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onEndDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onHoverState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 30
+  _onNormalState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onPointerClickState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onPointerDownState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onPointerEnterState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onPointerExitState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+  _onPointerUpState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _transitionTextColor:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _transitionFontSize:
+      _enableTransition: 0
+      _finalFontSize: 14
+--- !u!114 &1218469586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218469583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Text Size
+--- !u!222 &1218469587
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218469583}
+--- !u!1 &1342711102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1342711103}
+  m_Layer: 5
+  m_Name: NormalHover.SpriteChange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1342711103
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1342711102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 737701796}
+  m_Father: {fileID: 1645207305}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.34171876, y: 0.33333334}
+  m_AnchorMax: {x: 0.4458854, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -140}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1371227064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1371227065}
+  - component: {fileID: 1371227067}
+  - component: {fileID: 1371227066}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1371227065
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371227064}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1602237356}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.20794985, y: 0.16785012}
+  m_AnchorMax: {x: 0.79204994, y: 0.8321501}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0000019073486, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1371227066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371227064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Scale
+--- !u!222 &1371227067
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371227064}
+--- !u!1 &1398930871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1398930872}
+  - component: {fileID: 1398930874}
+  - component: {fileID: 1398930873}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1398930872
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398930871}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 737701796}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.20794985, y: 0.16785012}
+  m_AnchorMax: {x: 0.79204994, y: 0.8321501}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0000019073486, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1398930873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398930871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Color
+--- !u!222 &1398930874
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398930871}
+--- !u!1 &1543804114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1543804115}
+  m_Layer: 5
+  m_Name: NormalHover.Rotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1543804115
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1543804114}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1799533228}
+  m_Father: {fileID: 1645207305}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.8150521, y: 0.33333334}
+  m_AnchorMax: {x: 0.9192187, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1573555695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1573555696}
+  - component: {fileID: 1573555699}
+  - component: {fileID: 1573555698}
+  - component: {fileID: 1573555697}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1573555696
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573555695}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1218469584}
+  m_Father: {fileID: 676769585}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: -0.00000020220875, y: -0.00000005364418}
+  m_AnchorMax: {x: 0.9999999, y: 0.99999994}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1573555697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573555695}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b418c9dfbd4bfa4ea0df4bb5d4f8ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDebugging: 0
+  _onBeginDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onEndDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onHoverState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 1, b: 0.08965516, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onNormalState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerClickState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerDownState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerEnterState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8758622, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerExitState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8745098, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerUpState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+--- !u!114 &1573555698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573555695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1573555699
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573555695}
+--- !u!1 &1602237355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1602237356}
+  - component: {fileID: 1602237359}
+  - component: {fileID: 1602237358}
+  - component: {fileID: 1602237357}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1602237356
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602237355}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1371227065}
+  m_Father: {fileID: 325157846}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: -0.00000020220875, y: -0.00000005364418}
+  m_AnchorMax: {x: 0.9999999, y: 0.99999994}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1602237357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602237355}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b418c9dfbd4bfa4ea0df4bb5d4f8ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDebugging: 0
+  _onBeginDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onEndDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onHoverState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1.5, y: 1.5}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onNormalState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerClickState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerDownState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerEnterState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1.25, y: 1.25}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerExitState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1.25, y: 1.25}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerUpState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+--- !u!114 &1602237358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602237355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1602237359
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602237355}
+--- !u!1 &1645207304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1645207305}
+  m_Layer: 5
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1645207305
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645207304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1727034891}
+  - {fileID: 1921817097}
+  - {fileID: 325157846}
+  - {fileID: 676769585}
+  - {fileID: 1543804115}
+  - {fileID: 1342711103}
+  m_Father: {fileID: 170944661}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1727034890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1727034891}
+  - component: {fileID: 1727034893}
+  - component: {fileID: 1727034892}
+  m_Layer: 5
+  m_Name: Click.Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1727034891
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727034890}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1645207305}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.047880236, y: 0.344075}
+  m_AnchorMax: {x: 0.2608698, y: 0.48259166}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.000015258789, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1727034892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727034890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Normal and Hover State:'
+--- !u!222 &1727034893
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727034890}
+--- !u!1 &1799533227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1799533228}
+  - component: {fileID: 1799533231}
+  - component: {fileID: 1799533230}
+  - component: {fileID: 1799533229}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1799533228
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799533227}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1093151261}
+  m_Father: {fileID: 1543804115}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: -0.00000020220875, y: -0.00000005364418}
+  m_AnchorMax: {x: 0.9999999, y: 0.99999994}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1799533229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799533227}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b418c9dfbd4bfa4ea0df4bb5d4f8ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDebugging: 0
+  _onBeginDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onEndDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onHoverState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 315}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 1, b: 0.08965516, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onNormalState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerClickState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerDownState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerEnterState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 180}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8758622, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerExitState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 90}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 0, g: 0.8745098, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+  _onPointerUpState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _transitionRotation:
+      _enableTransition: 0
+      _finalRotation: {x: 0, y: 0, z: 0}
+    _transitionScale:
+      _enableTransition: 0
+      _finalScale: {x: 1, y: 1}
+    _imageColorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFill:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+--- !u!114 &1799533230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799533227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1799533231
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799533227}
+--- !u!1 &1870482365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1870482366}
+  - component: {fileID: 1870482368}
+  - component: {fileID: 1870482367}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1870482366
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870482365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 733679298}
+  m_Father: {fileID: 170944661}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.047864597, y: 0.5359167}
+  m_AnchorMax: {x: 0.4452604, y: 0.94675}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.000015258789, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1870482367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870482365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.49019608, b: 0.040212978, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1870482368
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870482365}
+--- !u!1 &1921817096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1921817097}
+  m_Layer: 5
+  m_Name: NormalHover.Color
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1921817097
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921817096}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 348439780}
+  m_Father: {fileID: 1645207305}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.34171876, y: 0.33333334}
+  m_AnchorMax: {x: 0.4458854, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2066181539
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,8 +2819,8 @@ Camera:
   m_GameObject: {fileID: 2066181539}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

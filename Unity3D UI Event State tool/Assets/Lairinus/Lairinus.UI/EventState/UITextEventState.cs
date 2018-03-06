@@ -19,16 +19,16 @@ namespace Lairinus.UI.Events
 
         #endregion Remarks
 
-        [SerializeField] TextEventState _onBeginDragState = new TextEventState();
-        [SerializeField] TextEventState _onDragState = new TextEventState();
-        [SerializeField] TextEventState _onEndDragState = new TextEventState();
-        [SerializeField] TextEventState _onHoverState = new TextEventState();
-        [SerializeField] TextEventState _onNormalState = new TextEventState();
-        [SerializeField] TextEventState _onPointerClickState = new TextEventState();
-        [SerializeField] TextEventState _onPointerDownState = new TextEventState();
-        [SerializeField] TextEventState _onPointerEnterState = new TextEventState();
-        [SerializeField] TextEventState _onPointerExitState = new TextEventState();
-        [SerializeField] TextEventState _onPointerUpState = new TextEventState();
+        [SerializeField] private TextEventState _onBeginDragState = new TextEventState(EventType.OnBeginDrag);
+        [SerializeField] private TextEventState _onDragState = new TextEventState(EventType.OnDrag);
+        [SerializeField] private TextEventState _onEndDragState = new TextEventState(EventType.OnEndDrag);
+        [SerializeField] private TextEventState _onHoverState = new TextEventState(EventType.OnHover);
+        [SerializeField] private TextEventState _onNormalState = new TextEventState(EventType.OnNormal);
+        [SerializeField] private TextEventState _onPointerClickState = new TextEventState(EventType.OnPointerClick);
+        [SerializeField] private TextEventState _onPointerDownState = new TextEventState(EventType.OnPointerDown);
+        [SerializeField] private TextEventState _onPointerEnterState = new TextEventState(EventType.OnPointerEnter);
+        [SerializeField] private TextEventState _onPointerExitState = new TextEventState(EventType.OnPointerExit);
+        [SerializeField] private TextEventState _onPointerUpState = new TextEventState(EventType.OnPointerUp);
 
         protected override void Awake()
         {
@@ -54,6 +54,19 @@ namespace Lairinus.UI.Events
             onPointerEnterState = _onPointerEnterState;
             onPointerExitState = _onPointerExitState;
             onPointerUpState = _onPointerUpState;
+
+            // Add all of the event states to a Dictionary for easy access
+            eventStatesCollection = new Dictionary<EventType, EventState>();
+            eventStatesCollection.Add(onHoverState.eventType, onHoverState);
+            eventStatesCollection.Add(onNormalState.eventType, onNormalState);
+            eventStatesCollection.Add(onPointerEnterState.eventType, onPointerEnterState);
+            eventStatesCollection.Add(onPointerExitState.eventType, onPointerExitState);
+            eventStatesCollection.Add(onPointerDownState.eventType, onPointerDownState);
+            eventStatesCollection.Add(onPointerUpState.eventType, onPointerUpState);
+            eventStatesCollection.Add(onPointerClickState.eventType, onPointerClickState);
+            eventStatesCollection.Add(onBeginDragState.eventType, onBeginDragState);
+            eventStatesCollection.Add(onEndDragState.eventType, onEndDragState);
+            eventStatesCollection.Add(onDragState.eventType, onDragState);
         }
     }
 }

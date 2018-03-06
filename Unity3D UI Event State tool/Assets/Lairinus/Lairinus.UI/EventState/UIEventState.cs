@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +10,34 @@ namespace Lairinus.UI.Events
     [RequireComponent(typeof(Graphic))]
     public partial class UIEventState : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
+        public enum EventType
+        {
+            OnNormal,
+            OnHover,
+            OnBeginDrag,
+            OnEndDrag,
+            OnDrag,
+            OnPointerEnter,
+            OnPointerExit,
+            OnPointerUp,
+            OnPointerDown,
+            OnPointerClick
+        }
+
+        public enum EventTransitionType
+        {
+            ImageColor,
+            ImageSpriteAndFill,
+            Rotation,
+            Scale,
+            TextColor,
+            TextFontSize
+        }
+
+        public EventType selectedEventTypeInternal { get; set; }
+        public EventTransitionType selectedEventTransitionInternal { get; set; }
+        public Dictionary<EventType, EventState> eventStatesCollection { get; protected set; }
+
         #region Remarks
 
         /*
@@ -26,16 +55,16 @@ namespace Lairinus.UI.Events
         #region Private Fields
 
         public RectTransform cachedRectTransform { get; private set; }
-        protected EventState onBeginDragState { get; set; }
-        protected EventState onDragState { get; set; }
-        protected EventState onEndDragState { get; set; }
-        protected EventState onHoverState { get; set; }
-        protected EventState onNormalState { get; set; }
-        protected EventState onPointerClickState { get; set; }
-        protected EventState onPointerDownState { get; set; }
-        protected EventState onPointerEnterState { get; set; }
-        protected EventState onPointerExitState { get; set; }
-        protected EventState onPointerUpState { get; set; }
+        public EventState onBeginDragState { get; set; }
+        public EventState onDragState { get; set; }
+        public EventState onEndDragState { get; set; }
+        public EventState onHoverState { get; set; }
+        public EventState onNormalState { get; set; }
+        public EventState onPointerClickState { get; set; }
+        public EventState onPointerDownState { get; set; }
+        public EventState onPointerEnterState { get; set; }
+        public EventState onPointerExitState { get; set; }
+        public EventState onPointerUpState { get; set; }
         [SerializeField] private bool _enableDebugging = false;
         private bool isHovering = false;
         private EventState lastTriggeredState = null;
@@ -313,11 +342,12 @@ namespace Lairinus.UI.Events
             {
                 ImageEventState ies = (ImageEventState)eventState;
                 ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+                ies.imageSpriteAndFill.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
             }
             else if (eventState is TextEventState)
             {
                 TextEventState tes = (TextEventState)eventState;
-                tes.transitionColor.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+                tes.transitionTextColor.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
                 tes.transitionFontSize.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
             }
         }
@@ -352,5 +382,10 @@ namespace Lairinus.UI.Events
         }
 
         #endregion Private Classes
+
+        public void Initialize()
+        {
+            Awake();
+        }
     }
 }
