@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace Lairinus.UI.Events
 {
@@ -10,35 +11,179 @@ namespace Lairinus.UI.Events
     [RequireComponent(typeof(Graphic))]
     public partial class UIEventState : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        public enum EventType
-        {
-            OnNormal,
-            OnHover,
-            OnBeginDrag,
-            OnEndDrag,
-            OnDrag,
-            OnPointerEnter,
-            OnPointerExit,
-            OnPointerUp,
-            OnPointerDown,
-            OnPointerClick
-        }
+        #region Public Enums
 
         public enum EventTransitionType
         {
-            ImageColor,
-            ImageSpriteAndFill,
+            SpriteAndFill,
             Rotation,
             Scale,
-            TextColor,
+            Color,
             TextFontSize
         }
 
-        public EventType selectedEventTypeInternal { get; set; }
-        public EventTransitionType selectedEventTransitionInternal { get; set; }
+        public enum EventType
+        {
+            OnNormal = 0,
+            OnHover = 1,
+            OnBeginDrag = 2,
+            OnEndDrag = 3,
+            OnDrag = 4,
+            OnPointerEnter = 5,
+            OnPointerExit = 6,
+            OnPointerUp = 7,
+            OnPointerDown = 8,
+            OnPointerClick = 9
+        }
+
+        #endregion Public Enums
+
+        #region Public Properties
+
+        public RectTransform cachedRectTransform { get; private set; }
+        public EventState onBeginDragState { get { return _onBeginDragState; } }
+        public EventState onDragState { get { return _onDragState; } }
+        public EventState onEndDragState { get { return _onEndDragState; } }
+        public EventState onHoverState { get { return _onHoverState; } }
+        public EventState onNormalState { get { return _onNormalState; } }
+        public EventState onPointerClickState { get { return _onPointerClickState; } }
+        public EventState onPointerDownState { get { return _onPointerDownState; } }
+        public EventState onPointerEnterState { get { return _onPointerEnterState; } }
+        public EventState onPointerExitState { get { return _onPointerExitState; } }
+        public EventState onPointerUpState { get { return _onPointerUpState; } }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
+        public void Initialize()
+        {
+            // Add all of the event states to a Dictionary for easy access
+            eventStatesCollection = new Dictionary<EventType, EventState>();
+            eventStatesCollection.Add(EventType.OnHover, onHoverState);
+            eventStatesCollection.Add(EventType.OnNormal, onNormalState);
+            eventStatesCollection.Add(EventType.OnPointerEnter, onPointerEnterState);
+            eventStatesCollection.Add(EventType.OnPointerExit, onPointerExitState);
+            eventStatesCollection.Add(EventType.OnPointerDown, onPointerDownState);
+            eventStatesCollection.Add(EventType.OnPointerUp, onPointerUpState);
+            eventStatesCollection.Add(EventType.OnPointerClick, onPointerClickState);
+            eventStatesCollection.Add(EventType.OnBeginDrag, onBeginDragState);
+            eventStatesCollection.Add(EventType.OnEndDrag, onEndDragState);
+            eventStatesCollection.Add(EventType.OnDrag, onDragState);
+
+            textElement = GetComponent<Text>();
+            imageElement = GetComponent<Image>();
+            cachedRectTransform = (RectTransform)transform;
+            VisualizeTransitionInternal(onNormalState);
+        }
+
+        public void VisualizeTransitionInternal(EventState eventState)
+        {
+            if (currentEventState != eventState)
+            {
+                previousEventState = currentEventState;
+                currentEventState = eventState;
+            }
+
+            RunEventStateTransitions(eventState, 1, 1);
+        }
+
+        #endregion Public Methods
+
+        #region Public Classes
+
+        [System.Serializable]
+        public class EventState
+        {
+            #region Remarks
+
+            /*   External and internal use
+             *   -------------------------
+             *   Contains the Graphic object transitions shared between the Graphic objects
+             */
+
+            #endregion Remarks
+
+            #region Public Constructors
+
+            public EventState(EventType thisEventType)
+            {
+                _eventType = thisEventType;
+                eventTransitionCollection = new Dictionary<EventTransitionType, BaseTransition>();
+                eventTransitionCollection.Add(EventTransitionType.Rotation, _transitionRotation);
+                eventTransitionCollection.Add(EventTransitionType.Scale, _transitionScale);
+                eventTransitionCollection.Add(EventTransitionType.Color, _colorTransition);
+                eventTransitionCollection.Add(EventTransitionType.SpriteAndFill, _imageSpriteAndFill);
+                eventTransitionCollection.Add(EventTransitionType.TextFontSize, _transitionFontSize);
+            }
+
+            #endregion Public Constructors
+
+            #region Public Properties
+
+            public Dictionary<EventTransitionType, BaseTransition> eventTransitionCollection { get; protected set; }
+            public ColorTransition colorTransition { get { return _colorTransition; } }
+            public SpriteAndFillTransition imageSpriteAndFill { get { return _imageSpriteAndFill; } }
+            public TextFontSizeTransition textFontSizeTransition { get { return _transitionFontSize; } }
+
+            #endregion Public Properties
+
+            #region Private Fields
+
+            [SerializeField] private ColorTransition _colorTransition = new ColorTransition(EventTransitionType.Color);
+            [SerializeField] private SpriteAndFillTransition _imageSpriteAndFill = new SpriteAndFillTransition(EventTransitionType.SpriteAndFill);
+            [SerializeField] private TextFontSizeTransition _transitionFontSize = new TextFontSizeTransition(EventTransitionType.TextFontSize);
+
+            #endregion Private Fields
+
+            #region Public Properties
+
+            public float allowedTransitionTime { get { return _allowedTransitionTime; } set { _allowedTransitionTime = value; } }
+            public UnityEvent onStateEnterEvent { get { return _onStateEnterEvent; } set { _onStateEnterEvent = value; } }
+            public RotationTransition transitionRotation { get { return _transitionRotation; } }
+            public ScaleTransition transitionScale { get { return _transitionScale; } }
+
+            #endregion Public Properties
+
+            #region Private Fields
+
+            public EventType eventType { get { return _eventType; } }
+            [SerializeField] protected float _allowedTransitionTime = 0.25F;
+            [SerializeField] protected UnityEvent _onStateEnterEvent = new UnityEvent();
+            [SerializeField] protected RotationTransition _transitionRotation = new RotationTransition(EventTransitionType.Rotation);
+            [SerializeField] protected ScaleTransition _transitionScale = new ScaleTransition(EventTransitionType.Scale);
+            private EventType _eventType = EventType.OnBeginDrag;
+
+            #endregion Private Fields
+        }
+
+        #endregion Public Classes
+
+        #region Private Fields
+
+        [SerializeField] private bool _enableDebugging = false;
+        [SerializeField] private EventState _onBeginDragState = new EventState(EventType.OnBeginDrag);
+        [SerializeField] private EventState _onDragState = new EventState(EventType.OnDrag);
+        [SerializeField] private EventState _onEndDragState = new EventState(EventType.OnEndDrag);
+        [SerializeField] private EventState _onHoverState = new EventState(EventType.OnHover);
+        [SerializeField] private EventState _onNormalState = new EventState(EventType.OnNormal);
+        [SerializeField] private EventState _onPointerClickState = new EventState(EventType.OnPointerClick);
+        [SerializeField] private EventState _onPointerDownState = new EventState(EventType.OnPointerDown);
+        [SerializeField] private EventState _onPointerEnterState = new EventState(EventType.OnPointerEnter);
+        [SerializeField] private EventState _onPointerExitState = new EventState(EventType.OnPointerExit);
+        [SerializeField] private EventState _onPointerUpState = new EventState(EventType.OnPointerUp);
+
+        #endregion Private Fields
+
+        #region Public Properties
+
+        public EventState currentEventState { get; protected set; }
         public Dictionary<EventType, EventState> eventStatesCollection { get; protected set; }
         public EventState previousEventState { get; protected set; }
-        public EventState currentEventState { get; protected set; }
+        public EventTransitionType selectedEventTransitionInternal { get; set; }
+        public EventType selectedEventTypeInternal { get; set; }
+
+        #endregion Public Properties
 
         #region Remarks
 
@@ -54,24 +199,23 @@ namespace Lairinus.UI.Events
 
         #endregion Remarks
 
-        #region Private Fields
+        #region Public Fields
 
-        public RectTransform cachedRectTransform { get; private set; }
-        public EventState onBeginDragState { get; set; }
-        public EventState onDragState { get; set; }
-        public EventState onEndDragState { get; set; }
-        public EventState onHoverState { get; set; }
-        public EventState onNormalState { get; set; }
-        public EventState onPointerClickState { get; set; }
-        public EventState onPointerDownState { get; set; }
-        public EventState onPointerEnterState { get; set; }
-        public EventState onPointerExitState { get; set; }
-        public EventState onPointerUpState { get; set; }
-        [SerializeField] private bool _enableDebugging = false;
+        public UnityEvent OnBeginDragUnityEvent = new UnityEvent();
+        public UnityEvent OnDragUnityEvent = new UnityEvent();
+        public UnityEvent OnEndDragUnityEvent = new UnityEvent();
+        public UnityEvent OnHoverUnityEvent = new UnityEvent();
+        public UnityEvent OnNormalUnityEvent = new UnityEvent();
+        public UnityEvent OnPointerClickUnityEvent = new UnityEvent();
+        public UnityEvent OnPointerDownUnityEvent = new UnityEvent();
+        public UnityEvent OnPointerEnterUnityEvent = new UnityEvent();
+        public UnityEvent OnPointerExitUnityEvent = new UnityEvent();
+        public UnityEvent OnPointerUpUnityEvent = new UnityEvent();
+
+        #endregion Public Fields
+
         private bool isHovering = false;
         private EventState lastTriggeredState = null;
-
-        #endregion Private Fields
 
         #region Public Methods
 
@@ -216,7 +360,8 @@ namespace Lairinus.UI.Events
                 Debug.Log(Debugger.Debug_OnPointerUp.Replace("%%custom%%", name));
         }
 
-        protected Graphic graphicElement { get; set; }
+        public Image imageElement { get; private set; }
+        public Text textElement { get; private set; }
 
         protected virtual void Awake()
         {
@@ -230,8 +375,7 @@ namespace Lairinus.UI.Events
 
             #endregion Remarks
 
-            cachedRectTransform = (RectTransform)transform;
-            HandleEventState(onNormalState);
+            Initialize();
         }
 
         protected virtual void Start()
@@ -246,8 +390,10 @@ namespace Lairinus.UI.Events
 
             #endregion Remarks
 
-            if (graphicElement != null)
-                graphicElement.raycastTarget = true;
+            if (textElement != null)
+                textElement.raycastTarget = true;
+            else if (imageElement != null)
+                imageElement.raycastTarget = true;
         }
 
         private void HandleEventState(EventState currentEventState)
@@ -340,18 +486,9 @@ namespace Lairinus.UI.Events
 
             eventState.transitionScale.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
             eventState.transitionRotation.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            if (eventState is ImageEventState)
-            {
-                ImageEventState ies = (ImageEventState)eventState;
-                ies.imageColorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-                ies.imageSpriteAndFill.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            }
-            else if (eventState is TextEventState)
-            {
-                TextEventState tes = (TextEventState)eventState;
-                tes.transitionTextColor.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-                tes.transitionFontSize.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
-            }
+            eventState.colorTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            eventState.imageSpriteAndFill.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
+            eventState.textFontSizeTransition.RunTransition_Internal(this, currentTransitionTime, totalTransitionTime);
         }
 
         #endregion Public Methods
@@ -384,25 +521,5 @@ namespace Lairinus.UI.Events
         }
 
         #endregion Private Classes
-
-        public void VisualizeTransitionInternal(EventState eventState)
-        {
-            if (currentEventState != eventState)
-            {
-                previousEventState = currentEventState;
-                currentEventState = eventState;
-            }
-
-            RunEventStateTransitions(eventState, 1, 1);
-        }
-
-        public void Initialize()
-        {
-            Awake();
-        }
-
-        private void Update()
-        {
-        }
     }
 }

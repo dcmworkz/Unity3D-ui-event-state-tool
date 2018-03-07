@@ -33,12 +33,20 @@ namespace Lairinus.UI.Events
 
             #endregion Remarks
 
+            #region Public Constructors
+
             public BaseTransition(EventTransitionType _transitionType)
             {
                 transitionType = _transitionType;
             }
 
+            #endregion Public Constructors
+
+            #region Public Properties
+
             public EventTransitionType transitionType { get; protected set; }
+
+            #endregion Public Properties
 
             #region Public Properties
 
@@ -78,47 +86,7 @@ namespace Lairinus.UI.Events
         }
 
         [System.Serializable]
-        public class EventState
-        {
-            #region Remarks
-
-            /*   External and internal use
-             *   -------------------------
-             *   Contains the Graphic object transitions shared between the Graphic objects
-             */
-
-            #endregion Remarks
-
-            public EventState(EventType thisEventType)
-            {
-                _eventType = thisEventType;
-            }
-
-            #region Public Properties
-
-            public float allowedTransitionTime { get { return _allowedTransitionTime; } set { _allowedTransitionTime = value; } }
-            public UnityEvent onStateEnterEvent { get { return _onStateEnterEvent; } set { _onStateEnterEvent = value; } }
-            public RotationTransition transitionRotation { get { return _transitionRotation; } }
-            public ScaleTransition transitionScale { get { return _transitionScale; } }
-
-            #endregion Public Properties
-
-            #region Private Fields
-
-            [SerializeField] protected float _allowedTransitionTime = 0.25F;
-            [SerializeField] protected UnityEvent _onStateEnterEvent = new UnityEvent();
-            [SerializeField] protected RotationTransition _transitionRotation = new RotationTransition(EventTransitionType.Rotation);
-            [SerializeField] protected ScaleTransition _transitionScale = new ScaleTransition(EventTransitionType.Scale);
-            private EventType _eventType = EventType.OnBeginDrag;
-            public EventType eventType { get { return _eventType; } }
-
-            #endregion Private Fields
-
-            public Dictionary<EventTransitionType, BaseTransition> eventTransitionCollection { get; protected set; }
-        }
-
-        [System.Serializable]
-        public class ImageColorTransition : BaseTransition
+        public class ColorTransition : BaseTransition
         {
             #region Remarks
 
@@ -152,75 +120,49 @@ namespace Lairinus.UI.Events
                 if (!_enableTransition)
                     return;
 
-                Image image = null;
-                if (eventStateElement is UIImageEventState)
-                {
-                    UIImageEventState imageEventState = (UIImageEventState)eventStateElement;
-                    image = (Image)imageEventState.graphicElement;
-                }
+                Image image = eventStateElement.imageElement;
+                Text text = eventStateElement.textElement;
+                if (image == null && text == null)
+                    return;
 
                 if (eventStateElement != null)
                     base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
 
-                Color elementColor = image.color;
-                elementColor = Color.Lerp(elementColor, _finalColor, currentTransitionTime / totalTransitionTime);
-                if (currentTransitionTime >= totalTransitionTime)
-                    elementColor = _finalColor;
+                if (image != null)
+                {
+                    Color elementColor = image.color;
+                    elementColor = Color.Lerp(elementColor, _finalColor, currentTransitionTime / totalTransitionTime);
+                    if (currentTransitionTime >= totalTransitionTime)
+                        elementColor = _finalColor;
 
-                image.color = elementColor;
+                    image.color = elementColor;
+                }
+                else if (text != null)
+                {
+                    Color elementColor = text.color;
+                    elementColor = Color.Lerp(elementColor, _finalColor, currentTransitionTime / totalTransitionTime);
+                    if (currentTransitionTime >= totalTransitionTime)
+                        elementColor = _finalColor;
+
+                    text.color = elementColor;
+                }
             }
 
             #endregion Public Methods
 
             #region Private Fields
 
+            public ColorTransition(EventTransitionType _transitionType) : base(_transitionType)
+            {
+            }
+
             [SerializeField] private Color _finalColor = Color.white;
 
-            public ImageColorTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
             #endregion Private Fields
         }
 
         [System.Serializable]
-        public class ImageEventState : EventState
-        {
-            #region Remarks
-
-            /*   External and internal use
-             *   -------------------------
-             *   Contains the transition information for a specific EventState for a UnityEngine.UI.Image object
-             */
-
-            #endregion Remarks
-
-            #region Public Properties
-
-            public ImageColorTransition imageColorTransition { get { return _imageColorTransition; } }
-            public ImageSpriteTransition imageSpriteAndFill { get { return _imageSpriteAndFill; } }
-
-            #endregion Public Properties
-
-            #region Private Fields
-
-            [SerializeField] private ImageColorTransition _imageColorTransition = new ImageColorTransition(EventTransitionType.ImageColor);
-            [SerializeField] private ImageSpriteTransition _imageSpriteAndFill = new ImageSpriteTransition(EventTransitionType.ImageSpriteAndFill);
-
-            public ImageEventState(EventType thisEventType) : base(thisEventType)
-            {
-                eventTransitionCollection = new Dictionary<EventTransitionType, BaseTransition>();
-                eventTransitionCollection.Add(EventTransitionType.Rotation, _transitionRotation);
-                eventTransitionCollection.Add(EventTransitionType.Scale, _transitionScale);
-                eventTransitionCollection.Add(EventTransitionType.ImageColor, _imageColorTransition);
-                eventTransitionCollection.Add(EventTransitionType.ImageSpriteAndFill, _imageSpriteAndFill);
-            }
-
-            #endregion Private Fields
-        }
-
-        [System.Serializable]
-        public class ImageSpriteTransition : BaseTransition
+        public class SpriteAndFillTransition : BaseTransition
         {
             #region Remarks
 
@@ -276,10 +218,10 @@ namespace Lairinus.UI.Events
                     return;
 
                 base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
-                if (eventStateElement.graphicElement == null)
+                if (eventStateElement.imageElement == null)
                     return;
 
-                Image imageElement = (Image)eventStateElement.graphicElement;
+                Image imageElement = eventStateElement.imageElement;
                 if (imageElement == null)
                     return;
 
@@ -312,14 +254,14 @@ namespace Lairinus.UI.Events
 
             #region Private Fields
 
+            public SpriteAndFillTransition(EventTransitionType _transitionType) : base(_transitionType)
+            {
+            }
+
             [SerializeField] private Image.FillMethod _fillMethod = Image.FillMethod.Vertical;
             [SerializeField] private FillType _fillType = FillType.IncrementFill;
             [SerializeField] private Sprite _finalSprite = null;
             [SerializeField] private bool _useImageFill = false;
-
-            public ImageSpriteTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
 
             #endregion Private Fields
         }
@@ -371,11 +313,11 @@ namespace Lairinus.UI.Events
 
             #region Private Fields
 
-            [SerializeField] private Vector3 _finalRotation = new Vector3(0, 0, 0);
-
             public RotationTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
             }
+
+            [SerializeField] private Vector3 _finalRotation = new Vector3(0, 0, 0);
 
             #endregion Private Fields
         }
@@ -427,113 +369,11 @@ namespace Lairinus.UI.Events
 
             #region Private Fields
 
-            [SerializeField] private Vector2 _finalScale = new Vector3(1, 1, 1);
-
             public ScaleTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
             }
 
-            #endregion Private Fields
-        }
-
-        [System.Serializable]
-        public class TextColorTransition : BaseTransition
-        {
-            #region Remarks
-
-            /*   External and internal use
-             *   -------------------------
-             *   Transition information to modify a UnityEngine.UI.Text object's color
-             */
-
-            #endregion Remarks
-
-            #region Public Properties
-
-            public Color finalColor { get { return _finalColor; } set { _finalColor = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
-            {
-                #region Remarks
-
-                /*
-                 *    For internal use only
-                 *    ---------------------
-                 *    Lerps the color of the Text object
-                 */
-
-                #endregion Remarks
-
-                if (!_enableTransition)
-                    return;
-
-                Text text = null;
-                if (eventStateElement is UITextEventState)
-                {
-                    UITextEventState textEventState = (UITextEventState)eventStateElement;
-                    text = (Text)textEventState.graphicElement;
-                }
-
-                if (eventStateElement != null)
-                    base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
-
-                Color elementColor = text.color;
-                elementColor = Color.Lerp(elementColor, _finalColor, currentTransitionTime / totalTransitionTime);
-                if (currentTransitionTime >= totalTransitionTime)
-                    elementColor = _finalColor;
-
-                text.color = elementColor;
-            }
-
-            #endregion Public Methods
-
-            #region Private Fields
-
-            [SerializeField] private Color _finalColor = Color.white;
-
-            public TextColorTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
-            #endregion Private Fields
-        }
-
-        [System.Serializable]
-        public class TextEventState : EventState
-        {
-            #region Remarks
-
-            /*   External and internal use
-             *   -------------------------
-             *   Contains the transition information for a specific EventState for a UnityEngine.UI.Text object
-             */
-
-            #endregion Remarks
-
-            #region Public Properties
-
-            public TextColorTransition transitionTextColor { get { return _transitionTextColor; } }
-            public TextFontSizeTransition transitionFontSize { get { return _transitionFontSize; } }
-
-            #endregion Public Properties
-
-            #region Private Fields
-
-            [SerializeField] private TextColorTransition _transitionTextColor = new TextColorTransition(EventTransitionType.TextColor);
-            [SerializeField] private TextFontSizeTransition _transitionFontSize = new TextFontSizeTransition(EventTransitionType.TextFontSize);
-
-            public TextEventState(EventType thisEventType) : base(thisEventType)
-            {
-                eventTransitionCollection = new Dictionary<EventTransitionType, BaseTransition>();
-                eventTransitionCollection.Add(EventTransitionType.Rotation, _transitionRotation);
-                eventTransitionCollection.Add(EventTransitionType.Scale, _transitionScale);
-                eventTransitionCollection.Add(EventTransitionType.ImageColor, _transitionTextColor);
-                eventTransitionCollection.Add(EventTransitionType.TextFontSize, _transitionFontSize);
-            }
+            [SerializeField] private Vector2 _finalScale = new Vector3(1, 1, 1);
 
             #endregion Private Fields
         }
@@ -564,16 +404,14 @@ namespace Lairinus.UI.Events
                 if (!_enableTransition)
                     return;
 
-                Text text = null;
-                if (eventStateElement is UITextEventState)
-                {
-                    UITextEventState textEventState = (UITextEventState)eventStateElement;
-                    text = (Text)textEventState.graphicElement;
-                }
+                if (eventStateElement == null)
+                    return;
 
-                if (eventStateElement != null)
-                    base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
+                Text text = eventStateElement.textElement;
+                if (text == null)
+                    return;
 
+                base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
                 float elementFontSize = text.fontSize;
                 elementFontSize = Mathf.Lerp(elementFontSize, _finalFontSize, currentTransitionTime / totalTransitionTime);
                 text.fontSize = (int)Mathf.Ceil(elementFontSize);
@@ -585,11 +423,11 @@ namespace Lairinus.UI.Events
 
             #region Private Fields
 
-            [SerializeField] private int _finalFontSize = 14;
-
             public TextFontSizeTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
             }
+
+            [SerializeField] private int _finalFontSize = 14;
 
             #endregion Private Fields
         }

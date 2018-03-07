@@ -299,8 +299,6 @@
   <ItemGroup>
     <Compile Include="Assets\Lairinus\Lairinus.UI\EventState\UIEventState.cs" />
     <Compile Include="Assets\Lairinus\Lairinus.UI\EventState\UIEventStateTransitions.cs" />
-    <Compile Include="Assets\Lairinus\Lairinus.UI\EventState\UIImageEventState.cs" />
-    <Compile Include="Assets\Lairinus\Lairinus.UI\EventState\UITextEventState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -26,14 +26,7 @@ namespace Lairinus.UI.Events
                     continue;
                 }
 
-                if (existingGraphicComponent is Text)
-                {
-                    go.AddComponent(typeof(UITextEventState));
-                }
-                else if (existingGraphicComponent is Image)
-                {
-                    go.AddComponent(typeof(UIImageEventState));
-                }
+                go.AddComponent(typeof(UIEventState));
             }
         }
     }

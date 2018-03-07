@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -7,21 +8,26 @@ using Lairinus.UI.Events;
 /// <summary>
 /// The editor is very laggy, EVEN WITHOUT THIS!
 /// </summary>
-[CustomEditor(typeof(UIImageEventState))]
+[CustomEditor(typeof(UIEventState))]
 public class UIImageEventStateEditor : Editor
 {
-    private UIImageEventState _imageEventState = null;
+    private UIEventState _imageEventState = null;
 
     private void OnEnable()
     {
-        _imageEventState = (UIImageEventState)target;
+        _imageEventState = (UIEventState)target;
         _imageEventState.Initialize();
     }
 
     public override void OnInspectorGUI()
     {
         GUI_CreateElementHeaderUI();
-        _imageEventState.selectedEventTypeInternal = (UIEventState.EventType)EditorGUILayout.EnumPopup("Pointer Event", _imageEventState.selectedEventTypeInternal);
+
+        GUILayout.Label("Events:");
+        GUILayout.FlexibleSpace();
+        _imageEventState.selectedEventTypeInternal = (UIEventState.EventType)GUILayout.SelectionGrid((int)_imageEventState.selectedEventTypeInternal, new string[] { UIEventState.EventType.OnNormal.ToString(), UIEventState.EventType.OnHover.ToString(), UIEventState.EventType.OnBeginDrag.ToString(), UIEventState.EventType.OnEndDrag.ToString(), UIEventState.EventType.OnDrag.ToString(), UIEventState.EventType.OnPointerEnter.ToString(), UIEventState.EventType.OnPointerExit.ToString(), UIEventState.EventType.OnPointerUp.ToString(), UIEventState.EventType.OnPointerDown.ToString(), UIEventState.EventType.OnPointerClick.ToString() }, 3);
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        //_imageEventState.selectedEventTypeInternal = (UIEventState.EventType)EditorGUILayout.EnumPopup("Pointer Event", _imageEventState.selectedEventTypeInternal);
 
         UIEventState.EventState foundEventState = null;
         if (_imageEventState.eventStatesCollection == null)
@@ -32,7 +38,7 @@ public class UIImageEventStateEditor : Editor
 
         if (foundEventState != null)
         {
-            foundEventState.allowedTransitionTime = EditorGUILayout.FloatField("Total Transition Time", foundEventState.allowedTransitionTime);
+            foundEventState.allowedTransitionTime = EditorGUILayout.Slider("Total Event Time", foundEventState.allowedTransitionTime, 0, 5);
             ShowPropertyConfiguration(foundEventState);
         }
         else
@@ -47,8 +53,6 @@ public class UIImageEventStateEditor : Editor
         // Show Base Properties
         UIEventState.EventTransitionType transitionType = _imageEventState.selectedEventTransitionInternal;
         GUI_ShowTransitionSelectionUI();
-        if (eventState.eventTransitionCollection.ContainsKey(transitionType))
-            GUI_ShowBasePropertyConfiguration(eventState.eventTransitionCollection[transitionType]);
 
         switch (_imageEventState.selectedEventTransitionInternal)
         {
@@ -74,36 +78,80 @@ public class UIImageEventStateEditor : Editor
                 }
                 break;
 
-            case UIEventState.EventTransitionType.ImageColor:
+            case UIEventState.EventTransitionType.Color:
                 {
                     // ----- Show Image Color in Custom Inspector ---- //
-                    UIEventState.ImageColorTransition _imageColorTransition = null;
+                    UIEventState.ColorTransition _imageColorTransition = null;
                     if (eventState.eventTransitionCollection.ContainsKey(_imageEventState.selectedEventTransitionInternal))
-                        _imageColorTransition = (UIEventState.ImageColorTransition)eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal];
+                        _imageColorTransition = (UIEventState.ColorTransition)eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal];
 
                     ShowImageColorPropertyConfiguration(_imageColorTransition);
                 }
                 break;
 
-            case UIEventState.EventTransitionType.ImageSpriteAndFill:
+            case UIEventState.EventTransitionType.SpriteAndFill:
                 {
                     // ----- Show Image Sprite in Custom Inspector ---- //
-                    UIEventState.ImageSpriteTransition _imageSpriteAndFillTransition = null;
-                    if (eventState.eventTransitionCollection.ContainsKey(_imageEventState.selectedEventTransitionInternal))
-                        _imageSpriteAndFillTransition = (UIEventState.ImageSpriteTransition)eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal];
+                    if (_imageEventState.imageElement != null)
+                    {
+                        UIEventState.SpriteAndFillTransition _imageSpriteAndFillTransition = null;
+                        if (eventState.eventTransitionCollection.ContainsKey(_imageEventState.selectedEventTransitionInternal))
+                            _imageSpriteAndFillTransition = (UIEventState.SpriteAndFillTransition)eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal];
 
-                    ShowImageSpriteAndFillPropertyConfiguration(_imageSpriteAndFillTransition);
+                        ShowImageSpriteAndFillPropertyConfiguration(_imageSpriteAndFillTransition);
+                    }
+                    else
+                    {
+                        ShowInvalidElementTypeForTransition("Image");
+                    }
+                }
+                break;
+
+            case UIEventState.EventTransitionType.TextFontSize:
+                {
+                    // ----- Show Font Size in Custom Inspector ---- //
+                    if (_imageEventState.textElement != null)
+                    {
+                        UIEventState.TextFontSizeTransition _textFontSize = null;
+                        if (eventState.eventTransitionCollection.ContainsKey(_imageEventState.selectedEventTransitionInternal))
+                            _textFontSize = (UIEventState.TextFontSizeTransition)eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal];
+
+                        ShowFontSizeTransitionConfiguration(_textFontSize);
+                    }
+                    else
+                    {
+                        ShowInvalidElementTypeForTransition("Text");
+                    }
                 }
                 break;
         }
+        if (eventState.eventTransitionCollection.ContainsKey(transitionType))
+            GUI_ShowBasePropertyConfiguration(eventState.eventTransitionCollection[transitionType]);
 
+        GUI_ShowUnityEvents(eventState);
         ShowActionableUI(eventState);
+    }
+
+    private void ShowInvalidElementTypeForTransition(string elementType)
+    {
+        EditorGUILayout.HelpBox("This transition is only available for " + elementType + " objects.", MessageType.Warning);
+    }
+
+    private void GUI_ShowUnityEvents(UIEventState.EventState eventState)
+    {
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GUILayout.Space(10);
+        SerializedProperty sp = serializedObject.FindProperty(eventState.eventType.ToString() + "UnityEvent");
+        EditorGUILayout.PropertyField(sp);
+        serializedObject.ApplyModifiedProperties();
+        GUILayout.Space(10);
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
     }
 
     private void GUI_CreateElementHeaderUI()
     {
         GUILayout.Space(25);
-        GUILayout.Label(new GUIContent("Lairinus Image Event State\n    1. Select a Pointer Event\n    2. Select a Transition to modify\n    3. Click the \"Visualize Transition\" button to see it in action "));
+        EditorGUILayout.HelpBox("Lairinus Image Event State\n    1. Select a Pointer Event\n    2. Select a Transition to modify\n    3. Click the \"Visualize Transition\" button to see it in action ", MessageType.Info);
         GUILayout.Space(25);
     }
 
@@ -111,13 +159,31 @@ public class UIImageEventStateEditor : Editor
     {
         if (transition != null)
         {
-            transition.enableTransition = EditorGUILayout.Toggle("Enable Transition", transition.enableTransition);
+            //transition.enableTransition = EditorGUILayout.Toggle("Enable Transition", transition.enableTransition);
+
+            string buttonText = "Enable Transition";
+            if (!transition.enableTransition)
+                buttonText = "Disable Transition";
+
+            if (GUILayout.Button(buttonText))
+            {
+                transition.enableTransition = !transition.enableTransition;
+            }
         }
+    }
+
+    private void ShowFontSizeTransitionConfiguration(UIEventState.TextFontSizeTransition fontSizeTransition)
+    {
+        if (fontSizeTransition != null)
+        {
+            fontSizeTransition.finalFontSize = EditorGUILayout.IntField("Final Font Size", fontSizeTransition.finalFontSize);
+        }
+        else
+            Debug.LogError("Error: The Font Size Transition property attached to the " + _imageEventState.name + " GameObject is NULL! Ensure you aren't setting this null!");
     }
 
     private void GUI_ShowTransitionSelectionUI()
     {
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         GUILayout.Space(5);
         _imageEventState.selectedEventTransitionInternal = (UIEventState.EventTransitionType)EditorGUILayout.EnumPopup("Transition", _imageEventState.selectedEventTransitionInternal);
     }
@@ -142,7 +208,7 @@ public class UIImageEventStateEditor : Editor
             Debug.LogError("Error: The Scale Transition property attached to the " + _imageEventState.name + " GameObject is NULL! Ensure you aren't setting this null!");
     }
 
-    private void ShowImageColorPropertyConfiguration(UIEventState.ImageColorTransition imageColorTransition)
+    private void ShowImageColorPropertyConfiguration(UIEventState.ColorTransition imageColorTransition)
     {
         if (imageColorTransition != null)
         {
@@ -152,13 +218,13 @@ public class UIImageEventStateEditor : Editor
             Debug.LogError("Error: The Image Color Transition property attached to the " + _imageEventState.name + " GameObject is NULL! Ensure you aren't setting this null!");
     }
 
-    private void ShowImageSpriteAndFillPropertyConfiguration(UIEventState.ImageSpriteTransition spriteAndFillTransition)
+    private void ShowImageSpriteAndFillPropertyConfiguration(UIEventState.SpriteAndFillTransition spriteAndFillTransition)
     {
         if (spriteAndFillTransition != null)
         {
             spriteAndFillTransition.finalSprite = (Sprite)EditorGUILayout.ObjectField("Final Sprite", spriteAndFillTransition.finalSprite, typeof(Sprite), true);
             spriteAndFillTransition.useImageFill = EditorGUILayout.Toggle("Use Image Fill", spriteAndFillTransition.useImageFill);
-            spriteAndFillTransition.fillType = (UIEventState.ImageSpriteTransition.FillType)EditorGUILayout.EnumPopup("Image Fill Type", spriteAndFillTransition.fillType);
+            spriteAndFillTransition.fillType = (UIEventState.SpriteAndFillTransition.FillType)EditorGUILayout.EnumPopup("Image Fill Type", spriteAndFillTransition.fillType);
             spriteAndFillTransition.fillMethod = (UnityEngine.UI.Image.FillMethod)EditorGUILayout.EnumPopup("Image Fill Method", spriteAndFillTransition.fillMethod);
         }
         else
