@@ -304,8 +304,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\UGUIMenu.cs" />
+    <Compile Include="Assets\Editor\UIEventStateInspector.cs" />
     <Compile Include="Assets\Editor\UIEventStateToolAddComponent.cs" />
-    <Compile Include="Assets\Editor\UIImageEventStateEditor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
