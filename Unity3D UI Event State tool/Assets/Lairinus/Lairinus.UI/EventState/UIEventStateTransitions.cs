@@ -7,7 +7,6 @@ namespace Lairinus.UI.Events
 {
     public partial class UIEventState : MonoBehaviour
     {
-        #region Remarks
 
         /*
          *    Internal and External use
@@ -16,52 +15,28 @@ namespace Lairinus.UI.Events
          *    and all of this functionality technically doesn't need to stand on its' own
          */
 
-        #endregion Remarks
-
-        #region Public Classes
-
         [System.Serializable]
-        public class ColorTransition : EventTransition
+        public class ColorTransition : EventTransitionBase
         {
-            #region Remarks
 
             /*   External and internal use
              *   -------------------------
              *   Transition information to modify an Image's color
              */
 
-            #endregion Remarks
-
-            #region Public Properties
-
-            public Color color { get { return _finalColor; } set { _finalColor = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            public ColorTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
-                #region Remarks
+            }
+
+            [SerializeField] private Color _finalColor = Color.white;
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
 
                 /*
                  *    For internal use only
                  *    ---------------------
                  *    Attempts to scale the Graphic object to its' desired target.
                  */
-
-                #endregion Remarks
-
-                if (!_enableTransition)
-                    return;
-
-                Image image = eventStateElement.imageElement;
-                Text text = eventStateElement.textElement;
-                if (image == null && text == null)
-                    return;
-
-                if (eventStateElement != null)
-                    base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
 
                 if (image != null)
                 {
@@ -83,23 +58,12 @@ namespace Lairinus.UI.Events
                 }
             }
 
-            #endregion Public Methods
-
-            #region Private Fields
-
-            public ColorTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
-            [SerializeField] private Color _finalColor = Color.white;
-
-            #endregion Private Fields
+            public Color color { get { return _finalColor; } set { _finalColor = value; } }
         }
 
         [System.Serializable]
-        public class EventTransition
+        public class EventTransitionBase
         {
-            #region Remarks
 
             /*
              *    For internal use only
@@ -107,36 +71,16 @@ namespace Lairinus.UI.Events
              *    Contains some shared customization for successfully running transitions on Graphic objects
              */
 
-            #endregion Remarks
-
-            #region Public Constructors
-
-            public EventTransition(EventTransitionType _transitionType)
+            public EventTransitionBase(EventTransitionType _transitionType)
             {
                 transitionType = _transitionType;
             }
 
-            #endregion Public Constructors
+            // If true, this will ignore the transition time for the elements and snap directly to a certain scale.
+            [SerializeField] protected bool _enableTransition = false;
 
-            #region Public Properties
-
-            public EventTransitionType transitionType { get; protected set; }
-
-            #endregion Public Properties
-
-
-
-            #region Public Properties
-
-            public bool enableTransition { get { return _enableTransition; } set { _enableTransition = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public virtual void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            public void RunTransition(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
             {
-                #region Remarks
 
                 /*
                  *    For internal use only
@@ -144,48 +88,79 @@ namespace Lairinus.UI.Events
                  *    Runs the transition on the Graphic object
                  */
 
-                #endregion Remarks
-
                 if (!_enableTransition)
                     return;
 
                 if (eventStateElement == null)
                     return;
+
+                Image image = eventStateElement.imageElement;
+                Text text = eventStateElement.textElement;
+                if (image == null && text == null)
+                    return;
+
+                RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime, image, text);
             }
 
-            #endregion Public Methods
+            protected virtual void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
+                throw new System.NotImplementedException();
+            }
 
-            #region Protected Fields
+            public EventTransitionType transitionType { get; protected set; }
 
-            // If true, this will ignore the transition time for the elements and snap directly to a certain scale.
-            [SerializeField] protected bool _enableTransition = false;
+            public bool enableTransition { get { return _enableTransition; } set { _enableTransition = value; } }
 
-            #endregion Protected Fields
         }
 
         [System.Serializable]
-        public class RotationTransition : EventTransition
+        public class MaterialTransition : EventTransitionBase
         {
-            #region Remarks
+
+            /*   External and internal use
+             *   -------------------------
+             *   Transition information to modify an Image's color
+             */
+
+            public MaterialTransition(EventTransitionType _transitionType) : base(_transitionType)
+            {
+            }
+
+            [SerializeField] private Material _finalMaterial = null;
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
+
+                /*
+                 *    For internal use only
+                 *    ---------------------
+                 *    Attempts to scale the Graphic object to its' desired target.
+                 */
+
+                if (image != null)
+                    image.material = _finalMaterial;
+                else if (text != null)
+                    text.material = _finalMaterial;
+            }
+
+            public Material finalMaterial { get { return _finalMaterial; } set { _finalMaterial = value; } }
+        }
+
+        [System.Serializable]
+        public class RotationTransition : EventTransitionBase
+        {
 
             /*   External and internal use
              *   -------------------------
              *   Transition information to modify a Graphic object's Euler Angle rotation
              */
 
-            #endregion Remarks
-
-            #region Public Properties
-
-            public Vector3 finalRotation { get { return _finalRotation; } set { _finalRotation = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            public RotationTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
-                #region Remarks
+            }
+
+            [SerializeField] private Vector3 _rotation = new Vector3(0, 0, 0);
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
 
                 /*
                  *    For internal use only
@@ -193,55 +168,30 @@ namespace Lairinus.UI.Events
                  *    Attempts to rotate the Graphic object to its' desired target.
                  */
 
-                #endregion Remarks
-
-                if (!_enableTransition)
-                    return;
-
-                if (eventStateElement != null)
-                    base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
-
-                eventStateElement.cachedRectTransform.eulerAngles = Vector3.Lerp(eventStateElement.cachedRectTransform.eulerAngles, _finalRotation, currentTransitionTime / totalTransitionTime);
+                eventStateElement.cachedRectTransform.eulerAngles = Vector3.Lerp(eventStateElement.cachedRectTransform.eulerAngles, _rotation, currentTransitionTime / totalTransitionTime);
                 if (currentTransitionTime >= totalTransitionTime)
-                    eventStateElement.cachedRectTransform.eulerAngles = _finalRotation;
+                    eventStateElement.cachedRectTransform.eulerAngles = _rotation;
             }
 
-            #endregion Public Methods
-
-            #region Private Fields
-
-            public RotationTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
-            [SerializeField] private Vector3 _finalRotation = new Vector3(0, 0, 0);
-
-            #endregion Private Fields
+            public Vector3 rotation { get { return _rotation; } set { _rotation = value; } }
         }
 
         [System.Serializable]
-        public class ScaleTransition : EventTransition
+        public class ScaleTransition : EventTransitionBase
         {
-            #region Remarks
 
             /*   External and internal use
              *   -------------------------
              *   Transition information to modify a Graphic object's scale
              */
 
-            #endregion Remarks
-
-            #region Public Properties
-
-            public Vector2 finalScale { get { return _finalScale; } set { _finalScale = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            public ScaleTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
-                #region Remarks
+            }
+
+            [SerializeField] private Vector3 _scale = new Vector3(1, 1, 1);
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
 
                 /*
                  *    For internal use only
@@ -249,49 +199,25 @@ namespace Lairinus.UI.Events
                  *    Attempts to scale the target to its' desired target.
                  */
 
-                #endregion Remarks
-
-                if (!_enableTransition)
-                    return;
-
-                if (eventStateElement != null)
-                    base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
-
-                eventStateElement.cachedRectTransform.localScale = Vector3.Lerp(eventStateElement.cachedRectTransform.localScale, _finalScale, currentTransitionTime / totalTransitionTime);
+                eventStateElement.cachedRectTransform.localScale = Vector3.Lerp(eventStateElement.cachedRectTransform.localScale, _scale, currentTransitionTime / totalTransitionTime);
                 if (currentTransitionTime >= totalTransitionTime)
-                    eventStateElement.cachedRectTransform.localScale = _finalScale;
+                    eventStateElement.cachedRectTransform.localScale = _scale;
             }
 
-            #endregion Public Methods
-
-            #region Private Fields
-
-            public ScaleTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
-            [SerializeField] private Vector2 _finalScale = new Vector3(1, 1, 1);
-
-            #endregion Private Fields
+            public Vector3 scale { get { return _scale; } set { _scale = value; } }
         }
 
         [System.Serializable]
-        public class SpriteAndFillTransition : EventTransition
+        public class SpriteAndFillTransition : EventTransitionBase
         {
-            #region Remarks
 
             /*   External and internal use
              *   -------------------------
              *   Transition information to modify a Graphic object's Euler Angle rotation
              */
 
-            #endregion Remarks
-
-            #region Public Properties
-
             public enum FillType
             {
-                #region Remarks
 
                 /*
                  * External and internal use
@@ -301,72 +227,9 @@ namespace Lairinus.UI.Events
                  * Decrementing fill starts on 1 and ends at 0
                  */
 
-                #endregion Remarks
-
                 IncrementFill,
                 DecrementFill
             }
-
-            public Image.FillMethod fillMethod { get { return _fillMethod; } set { _fillMethod = value; } }
-            public FillType fillType { get { return _fillType; } set { _fillType = value; } }
-            public Sprite finalSprite { get { return _finalSprite; } set { _finalSprite = value; } }
-            public bool useImageFill { get { return _useImageFill; } set { _useImageFill = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
-            {
-                #region Remarks
-
-                /*
-                 *    For internal use only
-                 *    ---------------------
-                 *    Attempts to set the Image's sprite to the destination sprite
-                 */
-
-                #endregion Remarks
-
-                if (!_enableTransition)
-                    return;
-
-                base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
-                if (eventStateElement.imageElement == null)
-                    return;
-
-                Image imageElement = eventStateElement.imageElement;
-                if (imageElement == null)
-                    return;
-
-                imageElement.sprite = _finalSprite;
-                if (_useImageFill)
-                {
-                    // We need to manually set the sprite to "filled" after we change from a potentially null sprite
-                    if (imageElement.sprite != null)
-                    {
-                        imageElement.type = Image.Type.Filled;
-                        imageElement.fillMethod = _fillMethod;
-
-                        if (_fillType == FillType.IncrementFill)
-                            imageElement.fillAmount = currentTransitionTime / totalTransitionTime;
-                        else
-                            imageElement.fillAmount = 1 - (currentTransitionTime / totalTransitionTime);
-                    }
-                }
-
-                if (currentTransitionTime >= totalTransitionTime)
-                {
-                    if (_fillType == FillType.IncrementFill)
-                        imageElement.fillAmount = 1;
-                    else if (_fillType == FillType.DecrementFill)
-                        imageElement.fillAmount = 0;
-                }
-            }
-
-            #endregion Public Methods
-
-            #region Private Fields
 
             public SpriteAndFillTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
@@ -376,24 +239,60 @@ namespace Lairinus.UI.Events
             [SerializeField] private FillType _fillType = FillType.IncrementFill;
             [SerializeField] private Sprite _finalSprite = null;
             [SerializeField] private bool _useImageFill = false;
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
 
-            #endregion Private Fields
+                /*
+                 *    For internal use only
+                 *    ---------------------
+                 *    Attempts to set the Image's sprite to the destination sprite
+                 */
+
+                if (image == null)
+                    return;
+
+                image.sprite = _finalSprite;
+                if (_useImageFill)
+                {
+                    // We need to manually set the sprite to "filled" after we change from a potentially null sprite
+                    if (image.sprite != null)
+                    {
+                        image.type = Image.Type.Filled;
+                        image.fillMethod = _fillMethod;
+
+                        if (_fillType == FillType.IncrementFill)
+                            image.fillAmount = currentTransitionTime / totalTransitionTime;
+                        else
+                            image.fillAmount = 1 - (currentTransitionTime / totalTransitionTime);
+                    }
+                }
+
+                if (currentTransitionTime >= totalTransitionTime)
+                {
+                    if (_fillType == FillType.IncrementFill)
+                        image.fillAmount = 1;
+                    else if (_fillType == FillType.DecrementFill)
+                        image.fillAmount = 0;
+                }
+            }
+
+            public Image.FillMethod fillMethod { get { return _fillMethod; } set { _fillMethod = value; } }
+            public FillType fillType { get { return _fillType; } set { _fillType = value; } }
+            public Sprite finalSprite { get { return _finalSprite; } set { _finalSprite = value; } }
+            public bool useImageFill { get { return _useImageFill; } set { _useImageFill = value; } }
         }
 
         [System.Serializable]
-        public class TextFontSizeTransition : EventTransition
+        public class TextFontSizeTransition : EventTransitionBase
         {
-            #region Public Properties
 
-            public int finalFontSize { get { return _finalFontSize; } set { _finalFontSize = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            public TextFontSizeTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
-                #region Remarks
+            }
+
+            [SerializeField] private int _finalFontSize = 14;
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
 
                 /*
                  *    For internal use only
@@ -401,19 +300,6 @@ namespace Lairinus.UI.Events
                  *    Lerps the color of the Text object
                  */
 
-                #endregion Remarks
-
-                if (!_enableTransition)
-                    return;
-
-                if (eventStateElement == null)
-                    return;
-
-                Text text = eventStateElement.textElement;
-                if (text == null)
-                    return;
-
-                base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
                 float elementFontSize = text.fontSize;
                 elementFontSize = Mathf.Lerp(elementFontSize, _finalFontSize, currentTransitionTime / totalTransitionTime);
                 text.fontSize = (int)Mathf.Ceil(elementFontSize);
@@ -421,34 +307,21 @@ namespace Lairinus.UI.Events
                     elementFontSize = _finalFontSize;
             }
 
-            #endregion Public Methods
-
-            #region Private Fields
-
-            public TextFontSizeTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
-            [SerializeField] private int _finalFontSize = 14;
-
-            #endregion Private Fields
+            public int finalFontSize { get { return _finalFontSize; } set { _finalFontSize = value; } }
         }
 
         [System.Serializable]
-        public class TextWriteoutTransition : EventTransition
+        public class TextWriteoutTransition : EventTransitionBase
         {
-            #region Public Properties
 
-            public string finalString { get { return _finalString; } set { _finalString = value; } }
-            public bool writeoutOverDuration { get { return _writeoutOverDuration; } set { _writeoutOverDuration = value; } }
-
-            #endregion Public Properties
-
-            #region Public Methods
-
-            public override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime)
+            public TextWriteoutTransition(EventTransitionType _transitionType) : base(_transitionType)
             {
-                #region Remarks
+            }
+
+            [SerializeField] private string _finalString = "";
+            [SerializeField] private bool _writeoutOverDuration = false;
+            protected override void RunTransition_Internal(UIEventState eventStateElement, float currentTransitionTime, float totalTransitionTime, Image image, Text text)
+            {
 
                 /*
                  *    For internal use only
@@ -456,19 +329,10 @@ namespace Lairinus.UI.Events
                  *    Changes the actual Text of a text element
                  */
 
-                #endregion Remarks
 
-                if (!_enableTransition)
-                    return;
-
-                if (eventStateElement == null)
-                    return;
-
-                Text text = eventStateElement.textElement;
                 if (text == null)
                     return;
 
-                base.RunTransition_Internal(eventStateElement, currentTransitionTime, totalTransitionTime);
                 string endText = text.text;
                 if (!_writeoutOverDuration || currentTransitionTime >= totalTransitionTime)
                     endText = _finalString;
@@ -489,20 +353,8 @@ namespace Lairinus.UI.Events
                 text.text = endText;
             }
 
-            #endregion Public Methods
-
-            #region Private Fields
-
-            public TextWriteoutTransition(EventTransitionType _transitionType) : base(_transitionType)
-            {
-            }
-
-            [SerializeField] private string _finalString = "";
-            [SerializeField] private bool _writeoutOverDuration = false;
-
-            #endregion Private Fields
+            public string finalString { get { return _finalString; } set { _finalString = value; } }
+            public bool writeoutOverDuration { get { return _writeoutOverDuration; } set { _writeoutOverDuration = value; } }
         }
-
-        #endregion Public Classes
     }
 }
