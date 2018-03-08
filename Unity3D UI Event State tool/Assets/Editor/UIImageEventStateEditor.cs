@@ -23,12 +23,19 @@ public class UIImageEventStateEditor : Editor
     {
         GUI_CreateElementHeaderUI();
 
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        GUILayout.Label("Events:");
-        GUILayout.FlexibleSpace();
-        _imageEventState.selectedEventTypeInternal = (UIEventState.EventType)GUILayout.SelectionGrid((int)_imageEventState.selectedEventTypeInternal, new string[] { UIEventState.EventType.OnNormal.ToString(), UIEventState.EventType.OnHover.ToString(), UIEventState.EventType.OnBeginDrag.ToString(), UIEventState.EventType.OnEndDrag.ToString(), UIEventState.EventType.OnDrag.ToString(), UIEventState.EventType.OnPointerEnter.ToString(), UIEventState.EventType.OnPointerExit.ToString(), UIEventState.EventType.OnPointerUp.ToString(), UIEventState.EventType.OnPointerDown.ToString(), UIEventState.EventType.OnPointerClick.ToString() }, 3);
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        //_imageEventState.selectedEventTypeInternal = (UIEventState.EventType)EditorGUILayout.EnumPopup("Pointer Event", _imageEventState.selectedEventTypeInternal);
+        EditorGUILayout.LabelField("Possible Event States:", EditorStyles.boldLabel);
+        GUILayout.Space(5);
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+        EditorGUILayout.HelpBox("Select one of the following Events in order to modify its' transitions. Each state will be captured, but nothing will happen unless that Event State has enabled transitions", MessageType.Info);
+        GUILayout.EndHorizontal();
+        GUILayout.Space(10);
+        string[] eventTypeNames = Enum.GetNames(typeof(UIEventState.EventType));
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+        _imageEventState.selectedEventTypeInternal = (UIEventState.EventType)GUILayout.SelectionGrid((int)_imageEventState.selectedEventTypeInternal, eventTypeNames, 5);
+        GUILayout.EndHorizontal();
 
         UIEventState.EventState foundEventState = null;
         if (_imageEventState.eventStatesCollection == null)
@@ -39,8 +46,13 @@ public class UIImageEventStateEditor : Editor
 
         if (foundEventState != null)
         {
-            foundEventState.allowedTransitionTime = EditorGUILayout.Slider("Total Event Duration", foundEventState.allowedTransitionTime, 0, 5);
+            GUI_ShowUnityEvents(foundEventState);
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(30);
+            foundEventState.allowedTransitionTime = EditorGUILayout.FloatField("Total " + _imageEventState.selectedEventTypeInternal.ToString() + " event duration", foundEventState.allowedTransitionTime);
+            GUILayout.EndHorizontal();
             ShowTransitionConfiguration(foundEventState);
+            ShowActionableUI(foundEventState);
         }
         else
             return;
@@ -51,11 +63,10 @@ public class UIImageEventStateEditor : Editor
         if (eventState == null)
             return;
 
-        GUI_ShowUnityEvents(eventState);
+        GUI_ShowTransitionSelectionUI(eventState);
 
         // Show Base Properties
         UIEventState.EventTransitionType transitionType = _imageEventState.selectedEventTransitionInternal;
-        GUI_ShowTransitionSelectionUI(eventState);
 
         switch (_imageEventState.selectedEventTransitionInternal)
         {
@@ -128,22 +139,24 @@ public class UIImageEventStateEditor : Editor
                 }
                 break;
         }
-
-        ShowActionableUI(eventState);
     }
 
     private void ShowInvalidElementTypeForTransition(string elementType)
     {
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
         EditorGUILayout.HelpBox("This transition is only available for " + elementType + " objects.", MessageType.Warning);
+        GUILayout.EndHorizontal();
     }
 
     private void GUI_ShowUnityEvents(UIEventState.EventState eventState)
     {
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
         SerializedProperty sp = serializedObject.FindProperty(eventState.eventType.ToString() + "UnityEvent");
         EditorGUILayout.PropertyField(sp);
         serializedObject.ApplyModifiedProperties();
-        GUILayout.Space(10);
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GUILayout.EndHorizontal();
     }
 
     private void GUI_CreateElementHeaderUI()
@@ -157,14 +170,10 @@ public class UIImageEventStateEditor : Editor
     {
         if (transition != null)
         {
-            string buttonText = "Enable Transition";
-            if (transition.enableTransition)
-                buttonText = "Disable Transition";
-
-            if (GUILayout.Button(buttonText))
-            {
-                transition.enableTransition = !transition.enableTransition;
-            }
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(30);
+            transition.enableTransition = EditorGUILayout.Toggle("Enable " + _imageEventState.selectedEventTransitionInternal.ToString() + " Transition", transition.enableTransition);
+            GUILayout.EndHorizontal();
         }
     }
 
@@ -181,10 +190,26 @@ public class UIImageEventStateEditor : Editor
     private void GUI_ShowTransitionSelectionUI(UIEventState.EventState eventState)
     {
         GUILayout.Space(5);
-        _imageEventState.selectedEventTransitionInternal = (UIEventState.EventTransitionType)EditorGUILayout.EnumPopup("Transition", _imageEventState.selectedEventTransitionInternal);
+        string[] eventTypeNames = Enum.GetNames(typeof(UIEventState.EventTransitionType));
+
+        GUI.skin.button.margin = new RectOffset(0, 0, 0, 0);
+        GUILayout.Space(25);
+        GUI.skin.label.onNormal.textColor = Color.red;
+        GUI.skin.textField.onNormal.textColor = Color.red;
+        EditorGUILayout.LabelField(_imageEventState.selectedEventTypeInternal.ToString() + " Transitions:", EditorStyles.boldLabel);
+        GUILayout.Space(5);
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+        EditorGUILayout.HelpBox("The " + _imageEventState.selectedEventTypeInternal.ToString() + " Event State contains all of the following transitions. Be sure the \"Enable Transition \" toggle is marked or else the Transition won't play!", MessageType.Info);
+        GUILayout.EndHorizontal();
+        GUILayout.Space(10);
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+        _imageEventState.selectedEventTransitionInternal = (UIEventState.EventTransitionType)GUILayout.SelectionGrid((int)_imageEventState.selectedEventTransitionInternal, eventTypeNames, 4);
+        GUILayout.EndHorizontal();
+
         if (eventState.eventTransitionCollection.ContainsKey(_imageEventState.selectedEventTransitionInternal))
             GUI_ShowBasePropertyConfiguration(eventState.eventTransitionCollection[_imageEventState.selectedEventTransitionInternal]);
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
     }
 
     private void ShowRotationPropertyConfiguration(UIEventState.RotationTransition rotationTransition)
@@ -211,7 +236,10 @@ public class UIImageEventStateEditor : Editor
     {
         if (imageColorTransition != null)
         {
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(30);
             imageColorTransition.finalColor = EditorGUILayout.ColorField("Final Color", imageColorTransition.finalColor);
+            GUILayout.EndHorizontal();
         }
         else
             Debug.LogError("Error: The Image Color Transition property attached to the " + _imageEventState.name + " GameObject is NULL! Ensure you aren't setting this null!");
@@ -232,20 +260,28 @@ public class UIImageEventStateEditor : Editor
 
     private void ShowActionableUI(UIEventState.EventState eventState)
     {
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        GUILayout.Space(20);
-        GUIContent labelContent = new GUIContent("This label is a good label");
-        GUILayout.Label(labelContent);
-        if (GUILayout.Button("Visualize Transition", GUILayout.Height(25)))
+        GUILayout.Space(30);
+        EditorGUILayout.LabelField("Visualize Event States:", EditorStyles.boldLabel);
+        GUILayout.Space(10);
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Visualize Transition", GUILayout.Height(25), GUILayout.Width(200)))
         {
             Debug.Log("Ok");
             _imageEventState.VisualizeTransitionInternal(eventState);
         }
 
-        if (GUILayout.Button("Set Previous Transition", GUILayout.Height(25)))
+        GUILayout.Space(30);
+
+        if (GUILayout.Button("Set Previous Transition", GUILayout.Height(25), GUILayout.Width(200)))
         {
             Debug.Log("Ok");
             _imageEventState.VisualizeTransitionInternal(_imageEventState.previousEventState);
         }
+        GUILayout.EndHorizontal();
+        GUILayout.Space(10);
+    }
+
+    private void ShowEventsConfiguration(UIEventState.EventState foundEventState)
+    {
     }
 }
