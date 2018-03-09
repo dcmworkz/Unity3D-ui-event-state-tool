@@ -420,10 +420,10 @@ public class UIGraphicEventStateInspector : Editor
                     return "Almost identical to OnPointerClick, however this is less mobile-friendly";
 
                 case UIGraphicEventState.EventType.OnPointerEnter:
-                    return "Called when the mouse enters the Graphic element's region. \n\nMobile support will vary.";
+                    return "Called just before the OnHover event when the mouse enters the Graphic element's region. \n\nMobile support will vary.";
 
                 case UIGraphicEventState.EventType.OnPointerExit:
-                    return "Called when the mouse leaves the Graphic element's region. \n\nMobile support will vary.";
+                    return "Called just before the OnNormal when the mouse leaves the Graphic element's region. \n\nMobile support will vary.";
 
                 default:
                     return "";
