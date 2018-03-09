@@ -8,14 +8,10 @@ namespace Lairinus.UI
         [MenuItem("Lairinus/UI/Place Anchors in Corners")]
         private static void uGUIAnchorAroundObject()
         {
-            #region Remarks
-
             /*
              * Places the object's anchors in the UI Element's Rect corners.
              * This allows UI elements to automatically resize
              */
-
-            #endregion Remarks
 
             foreach (GameObject go in Selection.gameObjects)
             {
