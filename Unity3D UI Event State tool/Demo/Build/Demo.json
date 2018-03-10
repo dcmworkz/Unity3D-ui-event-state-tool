@@ -1,0 +1,13 @@
+{
+"companyName": "Lairinus",
+"productName": "UI Graphic Event State tool",
+"dataUrl": "Demo.data.unityweb",
+"asmCodeUrl": "Demo.asm.code.unityweb",
+"asmMemoryUrl": "Demo.asm.memory.unityweb",
+"asmFrameworkUrl": "Demo.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}

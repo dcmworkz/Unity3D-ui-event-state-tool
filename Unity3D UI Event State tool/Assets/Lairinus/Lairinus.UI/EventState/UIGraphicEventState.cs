@@ -231,6 +231,26 @@ namespace Lairinus.UI.Events
                 eventTransitionCollection.Add(EventTransitionType.TextWriteout, _textWriteoutTransition);
             }
 
+            public bool CanRunEventState(bool @override = false)
+            {
+                /*   External and internal use
+                 *   -------------------------
+                 *   Determines whether or not this state should be run
+                 */
+
+                if (@override)
+                    return true;
+
+                foreach (KeyValuePair<EventTransitionType, EventTransitionBase> kvp in eventTransitionCollection)
+                {
+                    if (kvp.Value != null)
+                        if (kvp.Value.enableTransition)
+                            return true;
+                }
+
+                return false;
+            }
+
             public float allowedTransitionTime { get { return _allowedTransitionTime; } set { _allowedTransitionTime = value; } }
             public ColorTransition colorTransition { get { return _colorTransition; } }
             public Dictionary<EventTransitionType, EventTransitionBase> eventTransitionCollection { get; protected set; }
@@ -291,9 +311,19 @@ namespace Lairinus.UI.Events
 
             if (lastTriggeredState != currentEventState)
             {
-                lastTriggeredState = currentEventState;
-                StopCoroutine("HandleEventStateRoutine");
-                StartCoroutine("HandleEventStateRoutine", currentEventState);
+                if (currentEventState.CanRunEventState())
+                {
+                    lastTriggeredState = currentEventState;
+                    StopCoroutine("HandleEventStateRoutine");
+                    StartCoroutine("HandleEventStateRoutine", currentEventState);
+                }
+                else if (currentEventState.eventType != EventType.OnPointerClick)
+                {
+                    if (isHovering && onHoverState.CanRunEventState())
+                        HandleEventState(onHoverState);
+                    else if (!isHovering && onNormalState.CanRunEventState())
+                        HandleEventState(onNormalState);
+                }
             }
         }
 
