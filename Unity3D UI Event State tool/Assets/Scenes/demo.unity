@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -219,7 +219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98453355
@@ -747,10 +747,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.20968227, y: 0.79966664}
-  m_AnchorMax: {x: 0.3734427, y: 0.88299996}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -95, y: 116}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160253393
 MonoBehaviour:
@@ -1053,7 +1053,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0, g: 1, b: 0.13103461, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -1212,10 +1212,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1252,6 +1252,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1763569114}
   - {fileID: 733679298}
   - {fileID: 692204585}
   - {fileID: 2140417069}
@@ -1259,6 +1260,7 @@ RectTransform:
   - {fileID: 862163531}
   - {fileID: 1234325729}
   - {fileID: 1379382004}
+  - {fileID: 1690609949}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2665,10 +2667,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6250781, y: 0.76175}
-  m_AnchorMax: {x: 0.7468594, y: 0.85891664}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.0000038146973, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 165, y: 118.70003}
+  m_SizeDelta: {x: 117, y: 42.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254433525
 MonoBehaviour:
@@ -2843,7 +2845,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -3722,7 +3724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403616319
@@ -4248,10 +4250,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.029578118, y: 0.56649995}
-  m_AnchorMax: {x: 0.19333854, y: 0.6498333}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -268, y: -24}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &458933574
 MonoBehaviour:
@@ -4330,7 +4332,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.8235294, g: 0.8018136, b: 0.036332168, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -4700,10 +4702,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6250339, y: 0.63474166}
-  m_AnchorMax: {x: 0.7468567, y: 0.731925}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 165, y: 63.200027}
+  m_SizeDelta: {x: 117, y: 42.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &481385009
 MonoBehaviour:
@@ -4877,8 +4879,8 @@ MonoBehaviour:
       _enableTransition: 1
       _scale: {x: 1.25, y: 1.25, z: 1}
     _colorTransition:
-      _enableTransition: 0
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _enableTransition: 1
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -5152,10 +5154,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.029578114, y: 0.33316666}
-  m_AnchorMax: {x: 0.19333854, y: 0.41649997}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -268, y: -164}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523318070
 MonoBehaviour:
@@ -5266,7 +5268,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.037629742, g: 0.38062277, b: 0.85294116, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -5604,7 +5606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.000000011502993, y: 0.00000011179823}
   m_AnchorMax: {x: 1, y: 1.0000001}
-  m_AnchoredPosition: {x: 0, y: 0.0000076294}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -721.25995, y: -407.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &533163379
@@ -5682,10 +5684,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.20968229, y: 0.56633323}
-  m_AnchorMax: {x: 0.3734427, y: 0.6496666}
-  m_AnchoredPosition: {x: 8.3, y: -14.7}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -95, y: -24}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560952400
 MonoBehaviour:
@@ -6052,7 +6054,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.7352941, g: 0.4107505, b: 0, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -6208,10 +6210,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6858333, y: 0.096749984}
-  m_AnchorMax: {x: 0.95145833, y: 0.19391663}
-  m_AnchoredPosition: {x: -21.99, y: 0}
-  m_SizeDelta: {x: 72.68, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 221.2, y: -165.90001}
+  m_SizeDelta: {x: 229.4, y: 42.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591194997
 MonoBehaviour:
@@ -6385,8 +6387,8 @@ MonoBehaviour:
       _enableTransition: 0
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
-      _enableTransition: 0
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _enableTransition: 1
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -6660,10 +6662,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.20968227, y: 0.33299994}
-  m_AnchorMax: {x: 0.3734427, y: 0.41633326}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -95, y: -164}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597751484
 MonoBehaviour:
@@ -6902,7 +6904,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.8602941, g: 0.42382136, b: 0.42382136, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -7112,10 +7114,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.20968227, y: 0.6829999}
-  m_AnchorMax: {x: 0.3734427, y: 0.7663333}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -95, y: 46}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612923395
 MonoBehaviour:
@@ -7450,7 +7452,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 1, g: 0, b: 0.972414, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -7564,10 +7566,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.029578118, y: 0.7998333}
-  m_AnchorMax: {x: 0.19333854, y: 0.8831666}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -268, y: 116}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630179775
 MonoBehaviour:
@@ -8016,10 +8018,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.029578118, y: 0.6831666}
-  m_AnchorMax: {x: 0.19333854, y: 0.7665}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -268, y: 46}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &647926808
 MonoBehaviour:
@@ -8194,7 +8196,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -9443,12 +9445,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170944661}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3808597, y: 0.2991082}
-  m_AnchorMax: {x: 0.6191407, y: 0.42839926}
-  m_AnchoredPosition: {x: -0.00018311, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 241, y: -447}
+  m_SizeDelta: {x: 228, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692204586
 MonoBehaviour:
@@ -9973,12 +9975,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170944661}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.000000011502993, y: 0.00000011179823}
   m_AnchorMax: {x: 1, y: 1.0000001}
-  m_AnchoredPosition: {x: 0, y: 0.0000076294}
-  m_SizeDelta: {x: -721.25995, y: -407.57}
+  m_AnchoredPosition: {x: -0.006286621, y: 239.4}
+  m_SizeDelta: {x: 0.0025635, y: -478.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733679299
 MonoBehaviour:
@@ -10001,22 +10003,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lairinus.UI
-
-    --------------------
-
-    UI Graphic Events'
+  m_Text: Graphic Event State tool
 --- !u!222 &733679300
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11045,12 +11043,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170944661}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.039372515, y: 0.05842498}
-  m_AnchorMax: {x: 0.3808621, y: 0.2805083}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.0000009536743}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -181, y: -226.44}
+  m_SizeDelta: {x: 325.8, y: 71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &862163532
 MonoBehaviour:
@@ -11455,23 +11453,19 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
-    m_FontSize: 13
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 154
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '* The Graphic element property "raycastTarget" must be set to true in order
+  m_Text: \The Graphic element property "raycastTarget" must be set to true in order
     to capture all events (handled automatically)
-
-
-    * If an image is sitting behind a Text element that has the UIGraphicEventState
-    component, some of the pointer events may not function as intended. '
 --- !u!222 &862163534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15281,11 +15275,11 @@ RectTransform:
   - {fileID: 1324667184}
   - {fileID: 597751483}
   m_Father: {fileID: 170944661}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.007507324, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1238196735
@@ -15496,8 +15490,8 @@ MonoBehaviour:
       _enableTransition: 0
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
-      _enableTransition: 0
-      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+      _enableTransition: 1
+      _finalColor: {r: 0, g: 0, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -15509,7 +15503,7 @@ MonoBehaviour:
       _finalMaterial: {fileID: 0}
     _textFontSizeTransition:
       _enableTransition: 1
-      _finalFontSize: 30
+      _finalFontSize: 25
     _textWriteoutTransition:
       _enableTransition: 0
       _finalString: 
@@ -15528,8 +15522,8 @@ MonoBehaviour:
       _enableTransition: 0
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
-      _enableTransition: 0
-      _finalColor: {r: 0, g: 0, b: 0, a: 1}
+      _enableTransition: 1
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -15727,7 +15721,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -15778,7 +15772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277011206
@@ -16234,7 +16228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279789820
@@ -16760,10 +16754,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.20968227, y: 0.4496666}
-  m_AnchorMax: {x: 0.3734427, y: 0.53299993}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -95, y: -94}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324667185
 MonoBehaviour:
@@ -17034,7 +17028,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.13073096, g: 0.32133695, b: 0.45588237, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -17669,10 +17663,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6249292, y: 0.48549166}
-  m_AnchorMax: {x: 0.9662625, y: 0.5905084}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.0000019073486, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 221.2, y: 5.4999924}
+  m_SizeDelta: {x: 229.4, y: 45.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367401954
 MonoBehaviour:
@@ -17847,7 +17841,7 @@ MonoBehaviour:
       _scale: {x: 1.25, y: 1.25, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -18122,11 +18116,11 @@ RectTransform:
   - {fileID: 1504974747}
   - {fileID: 591194996}
   m_Father: {fileID: 170944661}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0075683594, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1402636022
@@ -18160,10 +18154,10 @@ RectTransform:
   m_Father: {fileID: 160253392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 79, y: -25}
+  m_SizeDelta: {x: 158, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402636024
 MonoBehaviour:
@@ -18615,12 +18609,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170944661}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.08614585, y: 0.88}
-  m_AnchorMax: {x: 0.3246875, y: 0.98333335}
-  m_AnchoredPosition: {x: -3.600006, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -181, y: 176}
+  m_SizeDelta: {x: 229, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418709843
 MonoBehaviour:
@@ -19570,7 +19564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1468113336
@@ -19644,10 +19638,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.68583333, y: 0.353825}
-  m_AnchorMax: {x: 0.95145833, y: 0.45884174}
-  m_AnchoredPosition: {x: -21.99, y: 0}
-  m_SizeDelta: {x: 72.68, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 221.20001, y: -52}
+  m_SizeDelta: {x: 229.4, y: 45.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484093161
 MonoBehaviour:
@@ -19821,8 +19815,8 @@ MonoBehaviour:
       _enableTransition: 0
       _scale: {x: 1.25, y: 1.25, z: 1}
     _colorTransition:
-      _enableTransition: 0
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _enableTransition: 1
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 1
       _fillMethod: 0
@@ -20043,19 +20037,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.6666667, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &1484093163
@@ -20096,10 +20090,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6858333, y: 0.22508332}
-  m_AnchorMax: {x: 0.95145833, y: 0.32224998}
-  m_AnchoredPosition: {x: -21.99, y: 0}
-  m_SizeDelta: {x: 72.68, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 221.2, y: -109.90001}
+  m_SizeDelta: {x: 229.4, y: 42.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504974748
 MonoBehaviour:
@@ -20273,8 +20267,8 @@ MonoBehaviour:
       _enableTransition: 0
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
-      _enableTransition: 0
-      _finalColor: {r: 0.14705881, g: 0.625, b: 0.22946249, a: 1}
+      _enableTransition: 1
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -20549,7 +20543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3808597, y: 0.2991082}
   m_AnchorMax: {x: 0.6191407, y: 0.42839926}
-  m_AnchoredPosition: {x: -0.00018311, y: 0}
+  m_AnchoredPosition: {x: -0.00018310547, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545635616
@@ -21005,7 +20999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561513576
@@ -21079,7 +21073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566633367
@@ -22030,6 +22024,464 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1674151523}
+--- !u!1 &1690609948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1690609949}
+  - component: {fileID: 1690609952}
+  - component: {fileID: 1690609951}
+  - component: {fileID: 1690609950}
+  m_Layer: 5
+  m_Name: Explanation.Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1690609949
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690609948}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 170944661}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 229.9, y: -235.97}
+  m_SizeDelta: {x: 325.8, y: 90.05499}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1690609950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690609948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7b8d2ef0b03ef4da8a7c5edf6ac8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnBeginDragUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDragUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnEndDragUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnNormalUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnPointerClickUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnPointerDownUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnPointerEnterUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnPointerExitUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnPointerUpUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _enableDebugging: 0
+  _onBeginDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onEndDragState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onHoverState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onNormalState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onPointerClickState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onPointerDownState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onPointerEnterState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onPointerExitState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+  _onPointerUpState:
+    _allowedTransitionTime: 0.25
+    _onStateEnterEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    _rotationTransition:
+      _enableTransition: 0
+      _rotation: {x: 0, y: 0, z: 0}
+    _scaleTransition:
+      _enableTransition: 0
+      _scale: {x: 1, y: 1, z: 1}
+    _colorTransition:
+      _enableTransition: 0
+      _finalColor: {r: 1, g: 1, b: 1, a: 1}
+    _imageSpriteAndFillTransition:
+      _enableTransition: 0
+      _fillMethod: 1
+      _fillType: 0
+      _finalSprite: {fileID: 0}
+      _useImageFill: 0
+    _materialTransition:
+      _enableTransition: 0
+      _finalMaterial: {fileID: 0}
+    _textFontSizeTransition:
+      _enableTransition: 0
+      _finalFontSize: 14
+    _textWriteoutTransition:
+      _enableTransition: 0
+      _finalString: 
+      _writeoutOverDuration: 0
+--- !u!114 &1690609951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690609948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 400910487a995f14f96946afbd49df84, type: 3}
+    m_FontSize: 15
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 154
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: If an image is sitting behind a Text element that has the UIGraphicEventState
+    component, some of the pointer events may not function as intended
+--- !u!222 &1690609952
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690609948}
 --- !u!1 &1703491786
 GameObject:
   m_ObjectHideFlags: 0
@@ -23943,6 +24395,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1763569113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1763569114}
+  - component: {fileID: 1763569116}
+  - component: {fileID: 1763569115}
+  m_Layer: 5
+  m_Name: Image.Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1763569114
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763569113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 170944661}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0025024, y: 0.000015259}
+  m_SizeDelta: {x: 959.99, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1763569115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763569113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69803923, g: 0.29803923, b: 0.3882353, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1763569116
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763569113}
 --- !u!1 &1766381359
 GameObject:
   m_ObjectHideFlags: 0
@@ -24015,7 +24535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775546428
@@ -25611,7 +26131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.000005469817, y: -0.0000003506154}
   m_AnchorMax: {x: 0.9999945, y: 0.99999917}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2061077805
@@ -26076,7 +26596,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.69803923, g: 0.29803923, b: 0.3882353, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -26148,10 +26668,10 @@ RectTransform:
   m_Father: {fileID: 1379382004}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.81919277, y: 0.63474166}
-  m_AnchorMax: {x: 0.9514323, y: 0.85892504}
-  m_AnchoredPosition: {x: -3.769989, y: 0}
-  m_SizeDelta: {x: 36.14, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 286.14996, y: 90.95003}
+  m_SizeDelta: {x: 99.5, y: 97.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074486012
 MonoBehaviour:
@@ -26326,7 +26846,7 @@ MonoBehaviour:
       _scale: {x: 1.25, y: 1.25, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.8206897, g: 0, b: 1, a: 1}
+      _finalColor: {r: 0, g: 0.6666667, b: 0, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -26357,7 +26877,7 @@ MonoBehaviour:
       _enableTransition: 0
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
-      _enableTransition: 0
+      _enableTransition: 1
       _finalColor: {r: 1, g: 1, b: 1, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
@@ -27057,10 +27577,10 @@ RectTransform:
   m_Father: {fileID: 1234325729}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.029578118, y: 0.4498333}
-  m_AnchorMax: {x: 0.19333854, y: 0.53316665}
-  m_AnchoredPosition: {x: 8.299988, y: -14.699982}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -268, y: -94}
+  m_SizeDelta: {x: 157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2116759543
 MonoBehaviour:
@@ -27203,7 +27723,7 @@ MonoBehaviour:
       _scale: {x: 1, y: 1, z: 1}
     _colorTransition:
       _enableTransition: 1
-      _finalColor: {r: 0.60294116, g: 0.075367644, b: 0.23909728, a: 1}
+      _finalColor: {r: 0.20784314, g: 0.49019608, b: 0.92941177, a: 1}
     _imageSpriteAndFillTransition:
       _enableTransition: 0
       _fillMethod: 1
@@ -27580,12 +28100,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170944661}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.69322914, y: 0.88}
-  m_AnchorMax: {x: 0.93177086, y: 0.98333335}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 229.90002, y: 176}
+  m_SizeDelta: {x: 230, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2140417070
 MonoBehaviour:
@@ -28001,7 +28521,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Uses 7 Transitions:'
+  m_Text: 'Allows 7 Transitions:'
 --- !u!222 &2140417072
 CanvasRenderer:
   m_ObjectHideFlags: 0
